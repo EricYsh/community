@@ -1,0 +1,22 @@
+body {
+    background: #efefef;
+}
+/*#0642cd*/
+
+.main{
+    background: white;
+    margin: 30px;
+}
+
+.btn-submit {
+    float: right;
+    margin-bottom: 15px;
+    background: #2194E0;
+    border-color: #2194E0;
+
+}
+.btn-submit:hover {
+    background-color: #5bc0de;
+    /*color: #fff;*/
+    /*border-bottom: 4px solid;*/
+}
