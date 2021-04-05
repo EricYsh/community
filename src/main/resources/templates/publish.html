@@ -53,7 +53,7 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Post</h2>
             <hr>
-            <form>
+            <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">Job Title</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Job Title @Company">
@@ -63,10 +63,15 @@
                     <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
                 </div>
                 <div class="form-group">
+                    <label for="title">Apply Job Here</label>
+                    <input type="url" class="form-control" id="joblink" name="joblink" placeholder="link to apply page">
+                </div>
+                <div class="form-group">
                     <label for="tag">Add tags</label>
                     <input type="text" class="form-control" id="tag" name="tag" placeholder="Input tags, divided by comma">
                 </div>
 
+                <span class="alert alert-danger" th:text="${error}"></span>
                 <!-- Indicates a successful or positive action -->
                     <button type="submit" class="btn btn-success btn-submit">Submit</button>
 
