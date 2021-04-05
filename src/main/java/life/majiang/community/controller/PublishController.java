@@ -37,6 +37,30 @@ public class PublishController {
             HttpServletRequest request,
             Model model
     ) {
+        model.addAttribute("title", title);
+        model.addAttribute("description", description);
+        model.addAttribute("tag",tag);
+        model.addAttribute("joblink", joblink);
+        if (title == null || title == "") {
+            model.addAttribute("error", "Please input title!");
+            return "publish";
+        }
+
+        if (description == null || description==""){
+            model.addAttribute("error", "Please input description!");
+            return "publish";
+        }
+
+        if (tag == null || tag ==""){
+            model.addAttribute("error", "Please input a tag!");
+            return "publish";
+        }
+
+        if (joblink == null || joblink==""){
+            model.addAttribute("error", "Please input job link!");
+            return "publish";
+        }
+
         User user = null;
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
@@ -50,7 +74,7 @@ public class PublishController {
             }
         }
         if (user == null) {
-            model.addAttribute("error", "no such user");
+            model.addAttribute("error", "Please login!");
             return "publish";
         }
 
@@ -61,6 +85,7 @@ public class PublishController {
         question.setCreator(user.getId());
         question.setGmtCreate(System.currentTimeMillis());
         question.setGmtModified(question.getGmtCreate());
+        question.setJoblink(joblink);
 
         questionMapper.create(question);
         return "redirect:/";

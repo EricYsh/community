@@ -30,6 +30,9 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right menu__list r-list">
+                <li th:if="${session.user != null}">
+                    <a href="/publish">Post</a>
+                </li>
                 <li class="dropdown" th:if="${session.user != null}">
                     <a href="#" class="dropdown-toggle menu__group menu__link r-link text-underlined" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
@@ -56,22 +59,24 @@
             <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">Job Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Job Title @Company">
+                    <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="Job Title @Company">
                 </div>
                 <div class="form-group">
-                    <label for="title">More Details</label>
-                    <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="title">Apply Job Here</label>
-                    <input type="url" class="form-control" id="joblink" name="joblink" placeholder="link to apply page">
-                </div>
-                <div class="form-group">
-                    <label for="tag">Add tags</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="Input tags, divided by comma">
+                    <label for="description">More Details</label>
+                    <textarea name="description" id="description" class="form-control" th:value="${description}" cols="30" rows="10"></textarea>
                 </div>
 
-                <span class="alert alert-danger" th:text="${error}"></span>
+                <div class="form-group">
+                    <label for="tag">Add tags</label>
+                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="Input tags, divided by comma">
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Apply Job Here</label>
+                    <input type="url" class="form-control" th:value="${joblink}" id="joblink" name="joblink" placeholder="link to apply page">
+                </div>
+
+                <span th:if="${error != null}" class="alert alert-danger" th:text="${error}"></span>
                 <!-- Indicates a successful or positive action -->
                     <button type="submit" class="btn btn-success btn-submit">Submit</button>
 
