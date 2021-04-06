@@ -11,6 +11,17 @@ body {
     margin: 30px;
 }
 
+img.media-object {
+    width: 55px;
+    height: 55px;
+}
+
+.commentview{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999999;
+}
+
 .btn-submit {
     float: right;
     margin-bottom: 15px;
