@@ -1,4 +1,4 @@
-package life.majiang.community.dto;
+package helper.recruit.community.dto;
 
 import lombok.Data;
 import model.User;

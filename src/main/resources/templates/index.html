@@ -56,16 +56,20 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Discover</h2>
             <hr>
-            <div class="media">
+            <div class="media" th:each="question : ${questions}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object" src="https://www.free-api.com/pic/sjtxsc.webp">
+                        <img class="media-object" th:src="${question.user.avatarUrl}">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">Job title</h4>
-                    Click to see details<br>
-                    <span class="commentview">12 comments • 2 views • 2021-01-10 04:22</span>
+                    <h4 class="media-heading" th:text="${question.title}"></h4>
+                    <span th:text="${question.description}"></span> <br>
+                    <span class="commentview">
+                        <span th:text="${question.commentCount}"></span> comments
+                        • <span th:text="${question.viewCount}"></span> views
+                        • <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+                    </span>
                 </div>
             </div>
         </div>

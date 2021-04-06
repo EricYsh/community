@@ -1,4 +1,4 @@
-package life.majiang.community.mapper;
+package helper.recruit.community.mapper;
 
 import model.Question;
 import org.apache.ibatis.annotations.Insert;

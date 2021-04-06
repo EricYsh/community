@@ -1,15 +1,15 @@
-package life.majiang.community.controller;
+package helper.recruit.community.controller;
 
-import life.majiang.community.dto.QuestionDTO;
-import life.majiang.community.mapper.QuestionMapper;
-import life.majiang.community.mapper.UserMapper;
+import helper.recruit.community.dto.QuestionDTO;
+import helper.recruit.community.mapper.QuestionMapper;
+import helper.recruit.community.mapper.UserMapper;
+import helper.recruit.community.service.QuestionService;
 import model.Question;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import sun.jvm.hotspot.oops.CompressedOops;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ public class IndexController {
     private UserMapper userMapper;  // load user database
 
     @Autowired
-    private QuestionMapper questionMapper; // load question database
+    private QuestionService questionService; // load question database
 
     @GetMapping("/")
     public String index(HttpServletRequest request,
@@ -41,10 +41,9 @@ public class IndexController {
                 }
             }
         }
-
-        List<Question> questionList = questionMapper.list();
+        // 跳转前把数据库数据放入主页
+        List<QuestionDTO> questionList = questionService.list();
         model.addAttribute("questions", questionList);
-
 
         return "index";
     }

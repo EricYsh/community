@@ -1,4 +1,4 @@
-package life.majiang.community.mapper;
+package helper.recruit.community.mapper;
 
 import model.User;
 import org.apache.ibatis.annotations.Insert;
@@ -14,4 +14,7 @@ public interface UserMapper {
 
     @Select("select * from users where token = #{token}")
     User findByToken(@Param("token") String token);
+
+    @Select("select * from users where id = #{id}")
+    User findById(@Param("id") Integer id);
 }

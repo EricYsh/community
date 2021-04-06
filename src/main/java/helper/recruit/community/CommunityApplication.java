@@ -1,4 +1,4 @@
-package life.majiang.community;
+package helper.recruit.community;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

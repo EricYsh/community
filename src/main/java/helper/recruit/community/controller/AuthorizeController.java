@@ -1,9 +1,9 @@
-package life.majiang.community.controller;
+package helper.recruit.community.controller;
 
-import life.majiang.community.dto.AccessTokenDTO;
-import life.majiang.community.dto.GithubUser;
-import life.majiang.community.mapper.UserMapper;
-import life.majiang.community.provider.GithubProvider;
+import helper.recruit.community.dto.AccessTokenDTO;
+import helper.recruit.community.dto.GithubUser;
+import helper.recruit.community.mapper.UserMapper;
+import helper.recruit.community.provider.GithubProvider;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
