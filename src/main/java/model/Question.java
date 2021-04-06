@@ -10,7 +10,7 @@ public class Question {
     private String tag;
     private Long gmtCreate;
     private Long gmtModified;
-    private Integer creator;
+    private Integer creator;  // connect to user ID in USERS Table (database)
     private Integer viewCount;
     private Integer commentCount;
     private Integer likeCount;
