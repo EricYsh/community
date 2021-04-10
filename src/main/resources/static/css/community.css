@@ -1,14 +1,195 @@
+/*body {*/
+/*    !*background: #efefef;*!*/
+/*    background-image: url("images/taicang.jpg");*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+/*!*#0642cd*!*/
+
+/*.main {*/
+/*    background: white;*/
+/*    margin: 30px;*/
+/*}*/
+
+/*img.media-object {*/
+/*    width: 55px;*/
+/*    height: 55px;*/
+/*}*/
+
+/*.commentview{*/
+/*    font-size: 12px;*/
+/*    font-weight: normal;*/
+/*    color: #999999;*/
+/*}*/
+
+/*.btn-submit {*/
+/*    float: right;*/
+/*    margin-bottom: 15px;*/
+/*    background: #2194E0;*/
+/*    border-color: #2194E0;*/
+
+/*}*/
+
+/*.btn-submit:hover {*/
+/*    background-color: #5bc0de;*/
+/*    !*color: #fff;*!*/
+/*    !*border-bottom: 4px solid;*!*/
+/*}*/
+
+/*!**/
+/*=====*/
+/*DEPENDENCES*/
+/*=====*/
+/**!*/
+
+/*.r-link {*/
+/*    display: inline-flex !important;*/
+/*}*/
+
+/*.r-link[href] {*/
+/*    color: var(--rLinkColor) !important;*/
+/*    text-decoration: none !important;*/
+/*}*/
+
+/*.r-list {*/
+/*    padding-left: 0 !important;*/
+/*    margin-top: 0 !important;*/
+/*    margin-bottom: 0 !important;*/
+/*    list-style: none !important;*/
+/*}*/
+
+
+/*!**/
+/*=====*/
+/*CORE STYLES*/
+/*=====*/
+/**!*/
+
+/*.menu {*/
+/*    --rLinkColor: currentColor;*/
+/*}*/
+
+/*.menu__link {*/
+/*    display: block;*/
+/*}*/
+
+/*!**/
+/*focus state*/
+/**!*/
+
+/*.menu__link:focus {*/
+/*    outline: 2px solid currentColor;*/
+/*    !*outline-offset:;*!*/
+/*}*/
+
+/*!**/
+/*fading siblings*/
+/**!*/
+
+/*.menu:hover .menu__link:not(:hover) {*/
+/*    --rLinkColor: rgba(22, 22, 22, .35);*/
+/*}*/
+
+/*!**/
+/*=====*/
+/*PRESENTATION STYLES*/
+/*=====*/
+/**!*/
+
+/*.menu {*/
+/*    background-color: #f0f0f0;*/
+/*    box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));*/
+/*}*/
+
+/*.menu__list {*/
+/*    display: flex;*/
+/*}*/
+
+/*.menu__link {*/
+/*    !*padding: var(--menuLinkPadding, 1.5rem 2.5rem);*!*/
+/*    font-weight: 700;*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*!**/
+/*=====*/
+/*TEXT UNDERLINED*/
+/*=====*/
+/**!*/
+
+/*.text-underlined {*/
+/*    position: relative;*/
+/*    overflow: hidden;*/
+
+/*    will-change: color;*/
+/*    transition: color .25s ease-out;*/
+/*}*/
+
+/*.text-underlined::before,*/
+/*.text-underlined::after {*/
+/*    content: "";*/
+/*    width: 0;*/
+/*    height: 3px;*/
+/*    background-color: currentColor;*/
+
+/*    will-change: width;*/
+/*    transition: width .1s ease-out;*/
+
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*}*/
+
+/*.text-underlined::before {*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*}*/
+
+/*.text-underlined::after {*/
+/*    right: 50%;*/
+/*    transform: translateX(50%);*/
+/*}*/
+
+/*.text-underlined:hover::before,*/
+/*.text-underlined:hover::after {*/
+/*    width: 100%;*/
+/*    transition-duration: .2s;*/
+/*}*/
+
+
+/*自适应背景，用的时候去掉下面那个body*/
+/*.demo {
+        position:fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        min-width: 1000px;
+        z-index:-10;
+        zoom: 1;
+        background-color: #fff;
+        background: url("images/6.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-position: center 0;
+}
+*/
+/*background: #efefef;*/
+
 body {
-    /*background: #efefef;*/
-    background-image: url("images/taicang.jpg");
+    background-image: url("images/6.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 /*#0642cd*/
 
 .main {
+    /*background: #efefef;*/
     background: white;
-    margin: 30px;
+    margin-left:40px;
+    margin-right:200px;
 }
 
 img.media-object {
@@ -25,8 +206,8 @@ img.media-object {
 .btn-submit {
     float: right;
     margin-bottom: 15px;
-    background: #2194E0;
-    border-color: #2194E0;
+    background: #052D4F;
+    border-color: #052D4F;
 
 }
 
@@ -153,4 +334,139 @@ TEXT UNDERLINED
 .text-underlined:hover::after {
     width: 100%;
     transition-duration: .2s;
+}
+
+/*导航栏格式*/
+.navbar—style{
+    background-color:#052D4F;
+    border:0px solid #052D4F;
+}
+
+/*icon的格式*/
+.icon-style{
+    color:white;
+    margin-right:2px;
+    margin-top:-1px; color:white;
+    background-color:#43A9BF;
+    height:25px;
+    display:block;
+    border:0px solid #052D4F;margin-left:-5px;
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+}
+
+.border-style{
+    border:0px solid #052D4F;
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+    height:25px;
+    display:block;
+}
+
+.display-style{
+    margin-top:6px;
+    margin-bottom:3px;
+    display:flex;
+    justify-content:center;
+}
+
+
+.button-style{
+    margin-top:-1px;
+    color:white;
+    background-color:#43A9BF;
+    height:25px;
+    display:block;
+    border:0px solid #052D4F;
+    margin-left:-5px;
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+}
+
+.post_div{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    margin-bottom:80px;
+    margin-right:80px;
+}
+
+.post-style{
+    background-color:white;
+    display:block;
+    width:55px;
+    height:55px;
+    text-align:center;
+}
+
+.post-a{
+    font-size: 100px;
+    margin-top:-15px;
+    margin-left:-22px;
+}
+
+.card-style{
+    opacity:0.95;
+    border-radius:20px;
+    border:4px solid #052D4F;
+
+}
+
+.main1{
+    /*background: #43A9BF;*/
+    /*background: #F5F5F5;*/
+    background: #F9F3F3 ;
+    margin-left:220px;
+    margin-right:220px;
+}
+
+input{
+    border-radius:5px;
+    /*border:0px solid #052D4F;*/
+    border:2px solid #052D4F;
+}
+
+.table{
+    border-radius:20px;
+    /*border:0px solid #052D4F;*/
+    border:2px solid #052D4F;
+    display:block;
+    height:120px;
+}
+
+.left{
+    display:flex;
+    justify-content:center;
+}
+
+.right{
+    display:flex;
+    justify-content:right;
+}
+
+.center{
+    display:flex;
+    justify-content:right;
+}
+
+.input-table{
+    margin-left:-50px;
+}
+
+.other-table{
+    margin-left:-25px;
+}
+
+.btn-style{
+    border-radius:20px; "
+position:absolute;
+    border:0px solid #052D4F;
+    bottom:0;
+}
+.plus-icon{
+    color:#052D4F;
+    margin-right:10px;
+    margin-left:20px
 }
