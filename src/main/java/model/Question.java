@@ -15,6 +15,8 @@ public class Question {
     private Integer commentCount;
     private Integer likeCount;
     private String joblink;
+    private String company;
+    private String place;
 
 //    public String getJoblink() {
 //        return joblink;

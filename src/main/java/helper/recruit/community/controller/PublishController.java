@@ -34,29 +34,44 @@ public class PublishController {
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
             @RequestParam("joblink") String joblink,
+            @RequestParam("company") String company,
+            @RequestParam("place") String place,
             HttpServletRequest request,
             Model model
     ) {
         model.addAttribute("title", title);
         model.addAttribute("description", description);
-        model.addAttribute("tag",tag);
+        model.addAttribute("tag", tag);
         model.addAttribute("joblink", joblink);
+        model.addAttribute("company", company);
+        model.addAttribute("place", place);
+
         if (title == null || title == "") {
             model.addAttribute("error", "Please input title!");
             return "publish";
         }
 
-        if (description == null || description==""){
+        if (company == null || company == "") {
+            model.addAttribute("error", "Please input a company name!");
+            return "publish";
+        }
+
+        if (place == null || place == "") {
+            model.addAttribute("error", "Please input place of work!");
+            return "publish";
+        }
+
+        if (description == null || description == "") {
             model.addAttribute("error", "Please input description!");
             return "publish";
         }
 
-        if (tag == null || tag ==""){
+        if (tag == null || tag == "") {
             model.addAttribute("error", "Please input a tag!");
             return "publish";
         }
 
-        if (joblink == null || joblink==""){
+        if (joblink == null || joblink == "") {
             model.addAttribute("error", "Please input job link!");
             return "publish";
         }
@@ -82,6 +97,8 @@ public class PublishController {
 
         Question question = new Question();
         question.setTitle(title);
+        question.setCompany(company);
+        question.setPlace(place);
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
