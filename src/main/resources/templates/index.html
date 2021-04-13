@@ -43,7 +43,7 @@
                 </li>-->
 
                 <li class="dropdown" th:if="${session.user != null}">
-<!--                    menu__group menu__link r-link text-underlined-->
+                    <!--                    menu__group menu__link r-link text-underlined-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false" th:text="${session.user.getName()}" style="color:white; font-size: 15px; font-weight:normal"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -65,7 +65,7 @@
 
 <div class="container-fluid main card-style" style=" color:#052D4F; " >
     <div class="row" >
-        <div class="col-lg-9 col-md-11 col-sm-12 col-xs-12" style="display:block; height:600px">
+        <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12" style="display:block; height:600px">
             <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true" ></span>Discover</h2>
             <hr>
             <!--循环展示职业信息-->
@@ -122,21 +122,24 @@
             </nav>
 
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>To be decided</h3>
+        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-1  col-sm-1" th:if="${session.user != null}" >
+            <div class="post-style ">
+                <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a left" style=" text-decoration:none; color:#43A9BF;" >
+                    <h2 style="font-weight:bold; margin-left:5px; margin-top:10px">POST</h2>
+                </a>
+            </div>
+            </div>
         </div>
+
+
     </div>
 </div>
 
 
 <!--POST按钮  改一下-->
 <div class="row post_div">
-    <div class="col-md-11  col-sm-11 "></div>
-    <div class="col-md-1  col-sm-1" th:if="${session.user != null}" >
-        <div class="post-style">
-            <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a" style=" text-decoration:none; color:#43A9BF;" ></a>
-        </div>
-    </div>
+
 </div>
 
 

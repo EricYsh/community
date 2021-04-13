@@ -399,12 +399,11 @@ TEXT UNDERLINED
     width:55px;
     height:55px;
     text-align:center;
+    margin-top:15px;
 }
 
 .post-a{
-    font-size: 100px;
-    margin-top:-15px;
-    margin-left:-22px;
+    font-size: 50px;
 }
 
 .card-style{
@@ -425,7 +424,7 @@ TEXT UNDERLINED
 input{
     border-radius:5px;
     /*border:0px solid #052D4F;*/
-    border:2px solid #052D4F;
+    /*border:2px solid #052D4F;*/
 }
 
 .table{
