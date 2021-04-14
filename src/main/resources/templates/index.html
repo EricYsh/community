@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="css/community.css" type="text/css">
+    <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
@@ -45,10 +46,13 @@
                 <li class="dropdown" th:if="${session.user != null}">
                     <!--                    menu__group menu__link r-link text-underlined-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false" th:text="${session.user.getName()}" style="color:white; font-size: 15px; font-weight:normal"><span class="caret"></span></a>
+                       aria-expanded="false" style="color:white; font-size: 15px; font-weight:normal">
+                        <!-- 显示登录后的用户名，和下拉的标签 -->
+                        <span th:text="${session.user.getName()}"></span>
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li class="menu__group menu__link r-link text-underlined"><a href="#">Message</a></li>
-                        <li class="menu__group menu__link r-link text-underlined"><a href="#">Profile</a></li>
+                        <li class="menu__group menu__link r-link text-underlined"><a href="/post">My Post</a></li>
                         <li class="menu__group menu__link r-link text-underlined"><a href="#">Logout</a></li>
                     </ul>
                 </li>
