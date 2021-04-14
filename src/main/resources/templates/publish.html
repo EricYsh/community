@@ -11,53 +11,7 @@
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
-<!--自适应背景调用它<div class="demo"></div>-->
-<nav class="navbar navbar-default page__menu menu" style="border:0px solid #052D4F; ">
-    <div class="container-fluid navbar—style" >
-        <div class="navbar-header ">
-            <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only ">Recruit Helper</span>
-
-            </button>
-            <a class="navbar-brand" style="color:white;margin-top:-1px;" href="/">Recruit Helper</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <form class="navbar-form navbar-left display-style"  >
-                <span  ></span>
-                <div class="form-group display-style" style=" display:flex; justify-content:center;">
-                    <input type="text" class="form-control border-style"  >
-                    <button type="submit" class=" glyphicon glyphicon-search icon-style search-button" aria-hidden="true"></button>
-                </div>
-
-            </form>
-
-            <ul class="nav navbar-nav navbar-right menu__list r-list">
-                <!--<li th:if="${session.user != null}">
-                    <a href="/publish" style="color:white; font-size: 15px" >POST</a>
-                </li>-->
-
-                <li class="dropdown" th:if="${session.user != null}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false" th:text="${session.user.getName()}" style="color:white; font-size: 15px; font-weight:normal"><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="menu__group menu__link r-link text-underlined"><a href="#">Message</a></li>
-                        <li class="menu__group menu__link r-link text-underlined"><a href="#">Profile</a></li>
-                        <li class="menu__group menu__link r-link text-underlined"><a href="#">Logout</a></li>
-                    </ul>
-                </li>
-                <li th:if="${session.user == null}" class="menu__group menu__link r-link text-underlined">
-                    <a style="color:white; font-size: 15px; font-weight:normal" href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">
-                        Login
-                    </a>
-                </li>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<div th:insert="~{navigation :: nav}">...</div>
 
 <!--这端数据获取需要注意，因为和设计挺多不一样的地方，所以改的比较多-->
 <div class="container-fluid main1 card-style" style=" color:#052D4F; ">

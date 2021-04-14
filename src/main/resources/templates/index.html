@@ -13,59 +13,7 @@
 <body>
 
 <!--自适应背景调用它<div class="demo"></div>-->
-
-
-<nav class="navbar navbar-default page__menu menu" style="border:0px solid #052D4F; ">
-    <div class="container-fluid navbar—style" >
-        <div class="navbar-header ">
-            <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only ">Recruit Helper</span>
-
-            </button>
-            <a class="navbar-brand" style="color:white;margin-top:-1px;" href="/">Recruit Helper</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <form class="navbar-form navbar-left display-style"  >
-                <span  ></span>
-                <div class="form-group display-style" style=" display:flex; justify-content:center;">
-                    <input type="text" class="form-control border-style"  >
-                    <button type="submit" class=" glyphicon glyphicon-search icon-style search-button" aria-hidden="true"></button>
-                </div>
-
-            </form>
-
-            <ul class="nav navbar-nav navbar-right menu__list r-list">
-
-                <!--<li th:if="${session.user != null}">
-                    <a href="/publish" style="color:white; font-size: 15px" >POST</a>
-                </li>-->
-
-                <li class="dropdown" th:if="${session.user != null}">
-                    <!--                    menu__group menu__link r-link text-underlined-->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false" style="color:white; font-size: 15px; font-weight:normal">
-                        <!-- 显示登录后的用户名，和下拉的标签 -->
-                        <span th:text="${session.user.getName()}"></span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="menu__group menu__link r-link text-underlined"><a href="/post">My Post</a></li>
-                        <li class="menu__group menu__link r-link text-underlined"><a href="#">Logout</a></li>
-                    </ul>
-                </li>
-                <li th:if="${session.user == null}" class="menu__group menu__link r-link text-underlined">
-                    <a style="color:white; font-size: 15px; font-weight:normal" href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">
-                        Login
-                    </a>
-                </li>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<div th:insert="~{navigation :: nav}">...</div>
 
 <div class="container-fluid main card-style" style=" color:#052D4F; " >
     <div class="row" >
@@ -124,7 +72,7 @@
 
                 </ul>
             </nav>
-
+        <!--发布职位信息-->
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
             <div class="col-md-1  col-sm-1" th:if="${session.user != null}" >
