@@ -31,21 +31,22 @@ public class YourpostController {
                            @RequestParam(name = "size", defaultValue = "5") Integer size
     ) {
 
-        // 检验cookie，做出持久化登陆状态的功能
-        Cookie[] cookies = request.getCookies();
-        User user = null;
-        if (cookies != null && cookies.length != 0) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    user = userMapper.findByToken(token);
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break;
-                }
-            }
-        }
+//        // 检验cookie，做出持久化登陆状态的功能
+//        Cookie[] cookies = request.getCookies();
+//        User user = null;
+//        if (cookies != null && cookies.length != 0) {
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("token")) {
+//                    String token = cookie.getValue();
+//                    user = userMapper.findByToken(token);
+//                    if (user != null) {
+//                        request.getSession().setAttribute("user", user);
+//                    }
+//                    break;
+//                }
+//            }
+//        }
+        User user = (User) request.getSession().getAttribute("user");
 
         if (user==null)
             return "redirect:/";
