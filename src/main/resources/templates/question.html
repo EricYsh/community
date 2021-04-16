@@ -1,0 +1,76 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${question.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/community.css" type="text/css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<!--自适应背景调用它<div class="demo"></div>-->
+<div th:insert="~{navigation :: nav}">...</div>
+
+<div class="container-fluid main card-style" style=" color:#052D4F; " >
+    <div class="row" >
+        <!--左边展示 Job details 部分-->
+        <div class="col-lg-8 col-md-11 col-sm-12 col-xs-12" style="display:block; height:600px">
+            <h3><span th:text="${question.title}"></span></h3>
+            <h4>
+                <span th:text="${question.company.toUpperCase()}"></span>
+                <span th:text=" in "></span>
+                <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span>
+            </h4>
+            <span class="commentview">
+                | Publisher: <span th:text="${question.user.getName()}"></span>
+                | Views: <span th:text="${question.viewCount}"></span>
+                | Publish Time: <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+            </span>
+            <hr>
+            <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" th:text="${question.description}"></div>
+            <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
+            <a th:href="@{'/publish/'+${question.id}}">
+                <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
+                Edit
+            </a>
+            <!--右边部分-->
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <!--            <div class="col-md-1  col-sm-1" th:if="${session.user != null}" >-->
+            <!--                <div class="post-style ">-->
+            <!--                    <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a left" style=" text-decoration:none; color:#43A9BF;" >-->
+            <!--                        <h2 style="font-weight:bold; margin-left:5px; margin-top:10px">POST</h2>-->
+            <!--                    </a>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>Publisher</h4>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle" th:src="${question.user.avatarUrl}">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <span th:text="${question.user.getName()}"></span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>Related Job Positions</h4>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

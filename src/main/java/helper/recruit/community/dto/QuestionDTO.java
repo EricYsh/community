@@ -18,6 +18,6 @@ public class QuestionDTO {
     private String joblink;
     private String company;
     private String place;
-
+    // 丰富对象，会有user的模型
     private User user;
 }
