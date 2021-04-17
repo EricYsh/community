@@ -4,6 +4,7 @@ import helper.recruit.community.dto.AccessTokenDTO;
 import helper.recruit.community.dto.GithubUser;
 import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.provider.GithubProvider;
+import helper.recruit.community.service.UserService;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,6 +34,9 @@ public class AuthorizeController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
@@ -53,18 +57,27 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate()); //????
             user.setAvatarUrl(githubUser.getAvatarUrl());
-            userMapper.insert(user);
+            // 判断用户是否存在
+            userService.createOrUpdate(user);
             response.addCookie(new Cookie("token", token));
 //            // login successfully
-//            request.getSession().setAttribute("user", githubUser);
             return "redirect:/";
         } else {
             // login fail
             return "redirect:/";
         }
-//        return "index";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response){
+        // delete session
+        request.getSession().removeAttribute("user");
+
+        // delete cookie
+        Cookie cookie = new Cookie("token", null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 }
