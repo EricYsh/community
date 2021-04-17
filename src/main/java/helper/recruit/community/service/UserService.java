@@ -24,7 +24,5 @@ public class UserService {
             dbUser.setToken(user.getToken());
             userMapper.update(dbUser);
         }
-
-
     }
 }

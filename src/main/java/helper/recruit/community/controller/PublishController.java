@@ -1,13 +1,17 @@
 package helper.recruit.community.controller;
 
+import helper.recruit.community.dto.QuestionDTO;
 import helper.recruit.community.mapper.QuestionMapper;
 import helper.recruit.community.mapper.UserMapper;
+import helper.recruit.community.service.QuestionService;
+import helper.recruit.community.service.UserService;
 import model.Question;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +25,25 @@ public class PublishController {
     private QuestionMapper questionMapper;
 
     @Autowired
-    private UserMapper userMapper;
+    private QuestionService questionService;
+
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable(name="id") Integer id,
+                       Model model){
+        // 点击后获取 question id 获取到 question
+//        Question question = questionMapper.getById(id);
+        QuestionDTO question = questionService.getById(id);
+        // 查询后回显到页面
+        model.addAttribute("title", question.getTitle());
+        model.addAttribute("description", question.getDescription());
+        model.addAttribute("tag", question.getTag());
+        model.addAttribute("joblink", question.getJoblink());
+        model.addAttribute("company", question.getCompany());
+        model.addAttribute("place", question.getPlace());
+        // 编辑edit 的特殊处理，获取id作为唯一标识，和 new post 分开
+        model.addAttribute("id", question.getId());
+        return "publish";
+    }
 
     @GetMapping("/publish")
     public String publish() {
@@ -36,6 +58,7 @@ public class PublishController {
             @RequestParam("joblink") String joblink,
             @RequestParam("company") String company,
             @RequestParam("place") String place,
+            @RequestParam(value="id", required = false) Integer id,
             HttpServletRequest request,
             Model model
     ) {
@@ -76,20 +99,6 @@ public class PublishController {
             return "publish";
         }
 
-//        User user = null;
-//        Cookie[] cookies = request.getCookies();
-//        if (cookies != null && cookies.length != 0) {
-//            for (Cookie cookie : cookies) {
-//                if (cookie.getName().equals("token")) {
-//                    String token = cookie.getValue();
-//                    user = userMapper.findByToken(token);
-//                    if (user != null) {
-//                        request.getSession().setAttribute("user", user);
-//                    }
-//                    break;
-//                }
-//            }
-//        }
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             model.addAttribute("error", "Please login!");
@@ -103,11 +112,11 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
         question.setJoblink(joblink);
+        question.setId(id);
 
-        questionMapper.create(question);
+        questionService.createOrUpdate(question);
+//        questionMapper.create(question);
         return "redirect:/";
     }
 }
