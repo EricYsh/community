@@ -157,7 +157,7 @@
 
 
 /*自适应背景，用的时候去掉下面那个body*/
-/*.demo {
+.demo {
         position:fixed;
         top: 0;
         left: 0;
@@ -174,15 +174,15 @@
         -o-background-size: cover;
         background-position: center 0;
 }
-*/
+
 /*background: #efefef;*/
 
-body {
+/*body {
     background-image: url("images/6.png");
-    /*background-color: #43A9BF;*/
+    background-color: #43A9BF;
     background-size: cover;
     background-repeat: no-repeat;
-}
+}*/
 
 /*#0642cd*/
 
@@ -418,8 +418,6 @@ TEXT UNDERLINED
     /*background: #43A9BF;*/
     /*background: #F5F5F5;*/
     background: #F9F3F3 ;
-    margin-left:200px;
-    margin-right:200px;
 }
 
 input{
