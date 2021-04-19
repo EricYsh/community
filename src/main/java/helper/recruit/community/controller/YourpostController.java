@@ -52,7 +52,7 @@ public class YourpostController {
 
         if ("questions".equals(action)) {
             model.addAttribute("section", "questions");
-            model.addAttribute("sectionName", "My Post");
+            model.addAttribute("sectionName", "Your Post");
         } else if ("replies".equals(action)) {
             model.addAttribute("section", "replies");
             model.addAttribute("sectionName", "Latest Reply");
