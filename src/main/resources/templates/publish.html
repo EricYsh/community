@@ -51,7 +51,7 @@
                         <label class=" col-md-5 right" for="tag">Add Tags: </label>
                         <input class=" col-md-7 form-control"  type="text" th:value="${tag}" id="tag" name="tag" placeholder="Input tags, divided by comma">
                     </div>
-                    <!--需要改库 加个Workplace-->
+                    <!--Workplace-->
                     <div class=" col-md-5 form-group center" >
                         <label class=" col-md-5 right" for="place">Workplace:</label>
                         <input class=" col-md-7 form-control" type="text" th:value="${place}" id="place" name="place" placeholder="Write Down Workplace">
@@ -59,17 +59,19 @@
                     <div class="col-md-1 "></div>
 
                 </div>
-                <!--More Detail 变成了Job_Description，这个暂时先这样-->
+                <!--Detail/Description-->
                 <div class="col-md-11 form-group input-table left"  style="margin-top:20px">
                     <label class=" col-md-3 left" for="description">Job Details: </label>
                     <input class=" col-md-7 table form-control" type="text" name="description" id="description" th:value="${description}">
                 </div>
 
 
-                <!--这个保留，放在job description下面，或者这里，改一下格式-->
+                <!--Conatact Information
+                本来这里写的是 job link，现在改成联系信息，但是名称没改，还是joblink，多改了怕数据库什么出错
+                -->
                 <div class="col-md-11 form-group input-table left ">
                     <label class=" col-md-3 left" for="title" >Apply Job Here:</label>
-                    <input class=" col-md-7 table_1 form-control"  type="url" th:value="${joblink}" id="joblink" name="joblink" placeholder="link to apply page">
+                    <input class=" col-md-7 table_1 form-control"  type="text" th:value="${joblink}" id="joblink" name="joblink" placeholder="Contacts information such as link or email">
 
 
 
