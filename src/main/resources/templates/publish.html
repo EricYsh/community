@@ -53,28 +53,35 @@
                     <div class="col-md-1 "></div>
 
                 </div>
-
                 <!--More Detail 变成了Job_Description，这个暂时先这样-->
-                <div class="col-md-11 form-group input-table center"  style="margin-top:20px">
-                    <label class=" col-md-3 right" for="description">Job Details: </label>
+                <div class="col-md-11 form-group input-table left"  style="margin-top:20px">
+                    <label class=" col-md-3 left" for="description">Job Details: </label>
                     <input class=" col-md-7 table form-control" type="text" name="description" id="description" th:value="${description}">
                 </div>
 
 
                 <!--这个保留，放在job description下面，或者这里，改一下格式-->
-                <div class="col-md-11 form-group input-table center ">
-                    <label class=" col-md-3 right" for="title" >Apply Job Here:</label>
-                    <input class=" col-md-7 table form-control"  type="url" th:value="${joblink}" id="joblink" name="joblink" placeholder="link to apply page">
+                <div class="col-md-11 form-group input-table left ">
+                    <label class=" col-md-3 left" for="title" >Apply Job Here:</label>
+                    <input class=" col-md-7 table_1 form-control"  type="url" th:value="${joblink}" id="joblink" name="joblink" placeholder="link to apply page">
+
+
+
                 </div>
+<!--                <div class="col-md-11  ">-->
+<!--                    &lt;!&ndash; 这个提示错误信息，放在 submit 左侧 显示 &ndash;&gt;-->
+<!--                    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>-->
+<!--                </div>>-->
 
-
-                <!-- 这个提示错误信息，放在 submit 左侧 显示 -->
-                <span th:if="${error != null}" class="alert alert-danger" th:text="${error}"></span>
 
                 <div >
-                    <div class="col-md-8"></div>
+                    <div th:if="${error != null}" class="alert alert-danger col-md-8" th:text="${error}" >
+
+
+                    </div>
+
                     <button type="submit" class="col-md-1 btn btn-success btn-submit btn-style" >Submit</button>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2" style="margin-bottom:40px"></div>
                 </div>
             </form>
         </div>

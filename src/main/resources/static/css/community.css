@@ -179,6 +179,7 @@
 
 body {
     background-image: url("images/6.png");
+    /*background-color: #43A9BF;*/
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -188,8 +189,8 @@ body {
 .main {
     /*background: #efefef;*/
     background: white;
-    margin-left:40px;
-    margin-right:200px;
+    margin-left:20px;
+    margin-right:20px;
 }
 
 img.media-object {
@@ -417,8 +418,8 @@ TEXT UNDERLINED
     /*background: #43A9BF;*/
     /*background: #F5F5F5;*/
     background: #F9F3F3 ;
-    margin-left:220px;
-    margin-right:220px;
+    margin-left:200px;
+    margin-right:200px;
 }
 
 input{
@@ -432,7 +433,16 @@ input{
     /*border:0px solid #052D4F;*/
     border:2px solid #052D4F;
     display:block;
-    height:120px;
+    height:180px;
+}
+
+.table_1{
+    border-radius:20px;
+    /*border:0px solid #052D4F;*/
+    border:2px solid #052D4F;
+    display:block;
+
+
 }
 
 .left{
