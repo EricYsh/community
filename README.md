@@ -28,7 +28,7 @@ http://mybatis.org/generator/
 
 ## Run this project in your device
 1. clone
-2. mvn flyway:migrate
+2. mvn flyway:migrate (first time)
 3. run this project in IDEA
 
 ### Please ignore the following code

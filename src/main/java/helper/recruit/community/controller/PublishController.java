@@ -69,32 +69,32 @@ public class PublishController {
         model.addAttribute("company", company);
         model.addAttribute("place", place);
 
-        if (title == null || title == "") {
+        if (title == null || title.equals("")) {
             model.addAttribute("error", "Please input title!");
             return "publish";
         }
 
-        if (company == null || company == "") {
+        if (company == null || company.equals("")) {
             model.addAttribute("error", "Please input a company name!");
             return "publish";
         }
 
-        if (place == null || place == "") {
+        if (place == null || place.equals("")) {
             model.addAttribute("error", "Please input place of work!");
             return "publish";
         }
 
-        if (description == null || description == "") {
+        if (description == null || description.equals("")) {
             model.addAttribute("error", "Please input description!");
             return "publish";
         }
 
-        if (tag == null || tag == "") {
+        if (tag == null || tag.equals("")) {
             model.addAttribute("error", "Please input a tag!");
             return "publish";
         }
 
-        if (joblink == null || joblink == "") {
+        if (joblink == null || joblink.equals("")) {
             model.addAttribute("error", "Please input job link!");
             return "publish";
         }
