@@ -23,3 +23,13 @@ https://jquery.com/
 Lombok
 https://www.projectlombok.org/setup/maven
 
+MyBatis Generator (a code generator for MyBatis)
+http://mybatis.org/generator/
+
+## Run this project in your device
+1. clone
+2. mvn flyway:migrate
+3. run this project in IDEA
+
+### Please ignore the following code
+> mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
