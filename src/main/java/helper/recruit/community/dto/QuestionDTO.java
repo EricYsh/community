@@ -1,7 +1,7 @@
 package helper.recruit.community.dto;
 
 import lombok.Data;
-import model.User;
+import helper.recruit.community.model.User;
 
 @Data
 public class QuestionDTO {

@@ -1,4 +1,4 @@
-package model;
+package helper.recruit.community.model;
 
 import lombok.Data;
 

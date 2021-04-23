@@ -1,6 +1,6 @@
 package helper.recruit.community.mapper;
 
-import model.Question;
+import helper.recruit.community.model.Question;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

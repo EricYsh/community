@@ -5,7 +5,7 @@ import helper.recruit.community.dto.GithubUser;
 import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.provider.GithubProvider;
 import helper.recruit.community.service.UserService;
-import model.User;
+import helper.recruit.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

@@ -3,7 +3,7 @@ package helper.recruit.community.controller;
 import helper.recruit.community.dto.PaginationDTO;
 import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.service.QuestionService;
-import model.User;
+import helper.recruit.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

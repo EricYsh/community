@@ -1,7 +1,7 @@
 package helper.recruit.community.service;
 
 import helper.recruit.community.mapper.UserMapper;
-import model.User;
+import helper.recruit.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

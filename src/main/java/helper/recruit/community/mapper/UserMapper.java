@@ -1,6 +1,6 @@
 package helper.recruit.community.mapper;
 
-import model.User;
+import helper.recruit.community.model.User;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

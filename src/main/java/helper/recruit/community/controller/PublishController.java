@@ -2,11 +2,9 @@ package helper.recruit.community.controller;
 
 import helper.recruit.community.dto.QuestionDTO;
 import helper.recruit.community.mapper.QuestionMapper;
-import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.service.QuestionService;
-import helper.recruit.community.service.UserService;
-import model.Question;
-import model.User;
+import helper.recruit.community.model.Question;
+import helper.recruit.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
