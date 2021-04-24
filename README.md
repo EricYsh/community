@@ -2,11 +2,16 @@
 A web app help SAT students especially for CS major to find internships or even work.
 
 ## Records of framework we use
+### frontend
 Thymeleaf:
 https://www.thymeleaf.org/doc/articles/layouts.html
 
-Bootstrap
+Bootstrap:
 https://v3.bootcss.com/getting-started/
+
+### backend
+OAuth App
+https://docs.github.com/en/developers/apps/creating-an-oauth-app
 
 Spring Boot
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
@@ -14,16 +19,16 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
 MyBatis
 https://mybatis.org/mybatis-3/index.html
 
-OAuth App
-https://docs.github.com/en/developers/apps/creating-an-oauth-app
+H2: lightweight database
+http://www.h2database.com/html/main.html
 
-jQuery
-https://jquery.com/
+Flyway: database migrate
+https://flywaydb.org/getstarted/firststeps/maven
 
 Lombok
 https://www.projectlombok.org/setup/maven
 
-MyBatis Generator (a code generator for MyBatis)
+MyBatis Generator (a code generator for MyBatis正在测试，暂时没用到)
 http://mybatis.org/generator/
 
 ## Run this project in your device
