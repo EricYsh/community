@@ -10,14 +10,14 @@
                     <span class="sr-only ">Recruit Helper</span>
 
                 </button>
-                <a class="navbar-brand" style="color:white;margin-top:-1px;" href="/">Recruit Helper</a>
+                <a class="navbar-brand" style="color:white;" href="/">Recruit Helper</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <form class="navbar-form navbar-left display-style"  >
                     <span  ></span>
-                    <div class="form-group display-style" style=" display:flex; justify-content:center;">
+                    <div class="form-group display-style" style=" display:flex; justify-content:center;margin-top:7px">
                         <input type="text" class="form-control border-style"  >
                         <button type="submit" class=" glyphicon glyphicon-search icon-style search-button" aria-hidden="true"></button>
                     </div>
@@ -28,15 +28,21 @@
                     <!--<li th:if="${session.user != null}">
                         <a href="/publish" style="color:white; font-size: 15px" >POST</a>
                     </li>-->
-                    <li class="dropdown" th:if="${session.user != null}">
+                    <li class="dropdown" th:if="${session.user != null}"  style=" height:52px">
                         <!--                    menu__group menu__link r-link text-underlined-->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false" style="color:white; font-size: 15px; font-weight:normal">
+                           aria-expanded="false" style="color:white; font-size: 15px; font-weight:normal; " >
                             <!-- 显示登录后的用户名，和下拉的标签 -->
-                            <span th:text="${session.user.getName()}"></span>
-                            <span class="caret"></span>
+                            <div style="margin-top:-5px">
+                                <span><img class="img-circle" th:src="${session.user.avatarUrl}" style="width:35px; height:35px"></span>
+                                <span th:text="${session.user.getName()}"></span>
+                                <span class="caret"></span>
+                            </div>
+
+
                         </a>
-                        <ul class="dropdown-menu">
+
+                        <ul class="dropdown-menu" >
                             <li class="menu__group menu__link r-link text-underlined"><a href="/yourpost/questions">Your Post</a></li>
                             <li class="menu__group menu__link r-link text-underlined"><a href="/logout">Logout</a></li>
                         </ul>
