@@ -78,24 +78,17 @@
 
 
                 <!--Conatact Information
-                本来这里写的是 job link，现在改成联系信息，但是名称没改，还是joblink，多改了怕数据库什么出错
+                本来这里写的是 job link，现在改成联系信息，但是名称没改，还是joblink，
                 -->
                 <div class="col-md-11 form-group input-table left ">
                     <label class=" col-md-3 left" for="title" >Apply Job Here:</label>
                     <input class=" col-md-7 table_1 form-control"  type="text" th:value="${joblink}" id="joblink" name="joblink" placeholder="Contacts information such as link or email">
 
-
-
                 </div>
-<!--                <div class="col-md-11  ">-->
-<!--                    &lt;!&ndash; 这个提示错误信息，放在 submit 左侧 显示 &ndash;&gt;-->
-<!--                    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>-->
-<!--                </div>>-->
-
 
                 <div >
+                    <!-- 这个提示错误信息，放在 submit 左侧 显示 -->
                     <div th:if="${error != null}" class="alert alert-danger col-md-8" th:text="${error}" >
-
 
                     </div>
 

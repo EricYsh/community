@@ -1,7 +1,6 @@
 package helper.recruit.community.controller;
 
 import helper.recruit.community.dto.QuestionDTO;
-import helper.recruit.community.mapper.QuestionMapper;
 import helper.recruit.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

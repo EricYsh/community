@@ -28,7 +28,6 @@ public class PublishController {
     public String edit(@PathVariable(name="id") Integer id,
                        Model model){
         // 点击后获取 question id 获取到 question
-//        Question question = questionMapper.getById(id);
         QuestionDTO question = questionService.getById(id);
         // 查询后回显到页面
         model.addAttribute("title", question.getTitle());
@@ -113,7 +112,6 @@ public class PublishController {
         question.setId(id);
 
         questionService.createOrUpdate(question);
-//        questionMapper.create(question);
         return "redirect:/";
     }
 }

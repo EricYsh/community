@@ -61,7 +61,7 @@ public class AuthorizeController {
             // 判断用户是否存在
             userService.createOrUpdate(user);
             response.addCookie(new Cookie("token", token));
-//            // login successfully
+            // login successfully
             return "redirect:/";
         } else {
             // login fail
