@@ -36,7 +36,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="users" domainObjectName="User" >
+        <table tableName="user" domainObjectName="User" >
             <!--            <property name="useActualColumnNames" value="false"/>-->
             <!--            <generatedKey column="ID" sqlStatement="DB2" identity="true" />-->
             <!--            <columnOverride column="DATE_FIELD" property="startDate" />-->
