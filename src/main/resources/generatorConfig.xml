@@ -10,6 +10,11 @@
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--    The <context> element is used to specify the environment for generating a set of objects. Child elements are used to specify the database to connect to, the type of objects to generate, and the tables to introspect.-->
+
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin">
+
+        </plugin>
+
         <jdbcConnection driverClass="org.h2.Driver"
                         connectionURL="jdbc:h2:~/community"
                         userId="sa"
@@ -42,6 +47,10 @@
             <!--            <columnOverride column="DATE_FIELD" property="startDate" />-->
             <!--            <ignoreColumn column="FRED" />-->
             <!--            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
+        </table>
+
+        <table tableName="question" domainObjectName="Question" >
+
         </table>
 
     </context>
