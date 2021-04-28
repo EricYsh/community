@@ -2,6 +2,8 @@ package helper.recruit.community.service;
 
 import helper.recruit.community.dto.PaginationDTO;
 import helper.recruit.community.dto.QuestionDTO;
+import helper.recruit.community.exception.CustomizeErrorCode;
+import helper.recruit.community.exception.CustomizeExpection;
 import helper.recruit.community.mapper.QuestionMapper;
 import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.model.Question;
@@ -111,6 +113,10 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
+        // 问题不存的异常处理
+        if (question==null){
+            throw new CustomizeExpection(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO); // copy source attribute to target
         User user = userMapper.selectByPrimaryKey(question.getCreator());//get user
@@ -138,7 +144,11 @@ public class QuestionService {
 
             QuestionExample example = new QuestionExample();
             example.createCriteria().andIdEqualTo(question.getId());
-            questionMapper.updateByExampleSelective(updateQuestion, example);
+            int updated = questionMapper.updateByExampleSelective(updateQuestion, example);
+            // 问题不存的异常处理
+            if (updated != 1){
+                throw new CustomizeExpection(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 }
