@@ -4,6 +4,7 @@ import helper.recruit.community.dto.PaginationDTO;
 import helper.recruit.community.dto.QuestionDTO;
 import helper.recruit.community.exception.CustomizeErrorCode;
 import helper.recruit.community.exception.CustomizeExpection;
+import helper.recruit.community.mapper.QuestionExtMapper;
 import helper.recruit.community.mapper.QuestionMapper;
 import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.model.Question;
@@ -23,6 +24,9 @@ public class QuestionService {
     // 同时使用 questionmapper 和 user mapper
     @Autowired
     private QuestionMapper questionMapper;
+
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
     @Autowired
     private UserMapper userMapper;
@@ -150,5 +154,22 @@ public class QuestionService {
                 throw new CustomizeExpection(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
+    }
+
+    // 访问页面调用这个方法增加阅读数
+    public void incView(Integer id) {
+        // 这个方法不能解决并发问题
+//        Question question = questionMapper.selectByPrimaryKey(id);
+//        Question updateQuestion = new Question();
+//        updateQuestion.setViewCount(question.getViewCount() + 1);
+//        QuestionExample questionExample = new QuestionExample();
+//        questionExample.createCriteria().andIdEqualTo(id);
+//        questionMapper.updateByExampleSelective(updateQuestion, questionExample);
+        // 巧妙解决并发问题的方法， 但是面对大量的同时请求也不行
+        Question record = new Question();
+        record.setId(id);
+        record.setViewCount(1);
+        questionExtMapper.incView(record);
+
     }
 }
