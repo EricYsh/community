@@ -25,7 +25,7 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name="id") Integer id,
+    public String edit(@PathVariable(name="id") Long id,
                        Model model){
         // 点击后获取 question id 获取到 question
         QuestionDTO question = questionService.getById(id);
@@ -54,7 +54,7 @@ public class PublishController {
             @RequestParam("joblink") String joblink,
             @RequestParam("company") String company,
             @RequestParam("place") String place,
-            @RequestParam(value="id", required = false) Integer id,
+            @RequestParam(value="id", required = false) Long id,
             HttpServletRequest request,
             Model model
     ) {

@@ -15,7 +15,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("question/{id}")
-    public String question(@PathVariable(name = "id") Integer id,
+    public String question(@PathVariable(name = "id") Long id,
                            Model model){
         QuestionDTO questionDTO = questionService.getById(id);
         // 每次打开问题后，累加查看次数

@@ -69,7 +69,7 @@ public class QuestionService {
         return paginationDTO;
     }
 
-    public PaginationDTO list(Integer userId, Integer page, Integer size) {
+    public PaginationDTO list(Long userId, Integer page, Integer size) {
         // page operation
         PaginationDTO paginationDTO = new PaginationDTO();
 
@@ -115,7 +115,7 @@ public class QuestionService {
         return paginationDTO;
     }
 
-    public QuestionDTO getById(Integer id) {
+    public QuestionDTO getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         // 问题不存的异常处理
         if (question==null){
@@ -133,6 +133,9 @@ public class QuestionService {
             // create a new
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setViewCount(0);
+            question.setLikeCount(0);
+            question.setCommentCount(0);
             questionMapper.insert(question);
         }else{
             // update
@@ -157,7 +160,7 @@ public class QuestionService {
     }
 
     // 访问页面调用这个方法增加阅读数
-    public void incView(Integer id) {
+    public void incView(Long id) {
         // 这个方法不能解决并发问题
 //        Question question = questionMapper.selectByPrimaryKey(id);
 //        Question updateQuestion = new Question();
