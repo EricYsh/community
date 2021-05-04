@@ -32,9 +32,10 @@ MyBatis Generator (a code generator for MyBatis正在测试，暂时没用到)
 http://mybatis.org/generator/
 
 ## Run this project in your device
-1. clone
-2. mvn flyway:migrate (first time)
-3. run this project in IDEA
+1. rm ~/community.*
+2. mvn flyway:migrate
+3. mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+4. run this project in IDEA
 
 ### Please ignore the following code
 > mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

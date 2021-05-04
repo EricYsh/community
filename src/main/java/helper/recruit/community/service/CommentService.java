@@ -10,6 +10,7 @@ import helper.recruit.community.model.Comment;
 import helper.recruit.community.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CommentService {
@@ -23,6 +24,7 @@ public class CommentService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
+    @Transactional
     public void insert(Comment comment) {
         if (comment.getParentId() == null || comment.getParentId() == 0) {
             throw new CustomizeExpection(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
@@ -39,7 +41,6 @@ public class CommentService {
                 throw new CustomizeExpection(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);
-
         } else {
             //回复问题
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());

@@ -5,7 +5,7 @@ import helper.recruit.community.model.User;
 
 @Data
 public class QuestionDTO {
-    private Integer id;
+    private Long id;
     private String title;
     private String description;
     private String tag;
