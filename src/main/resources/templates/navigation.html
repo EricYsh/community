@@ -40,19 +40,18 @@
                                 <span th:text="${session.user.getName()}"></span>
                                 <span class="caret"></span>
                             </div>
-
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li class="menu__group menu__link r-link text-underlined"><a href="/yourpost/questions">Your
+                            <li><a href="/yourpost/questions">Your
                                 Post</a></li>
-                            <li class="menu__group menu__link r-link text-underlined"><a href="/logout">Logout</a></li>
+                            <li><a href="/logout">Log out</a></li>
                         </ul>
                     </li>
-                    <li th:if="${session.user == null}" class="menu__group menu__link r-link text-underlined">
+                    <li th:if="${session.user == null}">
                         <a style="color:white; font-size: 15px; font-weight:normal"
                            href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">
-                            Login
+                            Log in
                         </a>
                     </li>
                 </ul>

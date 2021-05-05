@@ -9,6 +9,9 @@ https://www.thymeleaf.org/doc/articles/layouts.html
 Bootstrap:
 https://v3.bootcss.com/getting-started/
 
+jQuery:
+https://jquery.com/
+
 ### backend
 OAuth App
 https://docs.github.com/en/developers/apps/creating-an-oauth-app

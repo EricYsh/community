@@ -1,9 +1,8 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Recruit Helper</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="/css/community.css" type="text/css">
@@ -19,91 +18,99 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
 
-<!--这端数据获取需要注意，因为和设计挺多不一样的地方，所以改的比较多-->
-<div class="container-fluid main1 card-style" style=" color:#052D4F; ">
-    <div class="row" >
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!--这端数据获取需要注意，因为和设计挺多不一样的地方，所以改的比较多-->
+        <div class="container-fluid main1 card-style" style=" color:#052D4F; ">
             <div class="row">
-                <div class="col-md-5">
-                    <h2><span class="glyphicon glyphicon-plus plus-icon" aria-hidden="true" ></span>Post New Job</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h2><span class="glyphicon glyphicon-plus plus-icon" aria-hidden="true"></span>Post New Job
+                            </h2>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-1">
+                            <!--  glyphicon glyphicon-remove-sign glyphicon glyphicon-remove-->
+                            <a href="/" class="glyphicon glyphicon-remove close"
+                               style="color:#052D4F; opacity:0.8;"></a>
+                        </div>
+                    </div>
+
+
+                    <hr>
+
+                    <form action="/publish" method="post">
+                        <input type="hidden" name="id" th:value="${id}">
+
+                        <div class=" col-md-12 left input-table">
+                            <div class="col-md-5 form-group center">
+                                <label class=" col-md-5 right" for="title">Job Title:</label>
+                                <input class=" col-md-7 form-control" type="text" th:value="${title}" id="title"
+                                       name="title" placeholder="Job Title">
+                            </div>
+
+                            <!--需要改库 加个Company_Name-->
+                            <div class=" col-md-5 form-group center">
+                                <label class=" col-md-5 " for="company">Company:</label>
+                                <input class=" col-md-7 form-control" type="text" th:value="${company}" id="company"
+                                       name="company" placeholder="Input Company Name">
+                            </div>
+
+
+                            <div class="col-md-1 "></div>
+                        </div>
+
+                        <div class=" col-md-12 input-table left">
+
+                            <div class=" col-md-5 form-group center">
+                                <label class=" col-md-5 right" for="tag">Add Tags: </label>
+                                <input class=" col-md-7 form-control" type="text" th:value="${tag}" id="tag" name="tag"
+                                       placeholder="Input tags, divided by comma">
+                            </div>
+                            <!--Workplace-->
+                            <div class=" col-md-5 form-group center">
+                                <label class=" col-md-5 right" for="place">Workplace:</label>
+                                <input class=" col-md-7 form-control" type="text" th:value="${place}" id="place"
+                                       name="place" placeholder="Write Down Workplace">
+                            </div>
+                            <div class="col-md-1 "></div>
+
+                        </div>
+                        <!--Detail/Description-->
+                        <div class="col-md-11 form-group input-table left" style="margin-top:20px">
+                            <label class=" col-md-3 left" for="description">Job Details: </label>
+                            <textarea class=" col-md-7 table form-control" name="description" id="description"
+                                      th:text="${description}" style="height:180px"></textarea>
+                        </div>
+
+
+                        <!--Conatact Information
+                        本来这里写的是 job link，现在改成联系信息，但是名称没改，还是joblink，
+                        -->
+                        <div class="col-md-11 form-group input-table left ">
+                            <label class=" col-md-3 left" for="title">Apply Job Here:</label>
+                            <input class=" col-md-7 table_1 form-control" type="text" th:value="${joblink}" id="joblink"
+                                   name="joblink" placeholder="Contacts information such as link or email">
+
+                        </div>
+
+                        <div>
+                            <!-- 这个提示错误信息，放在 submit 左侧 显示 -->
+                            <div th:if="${error != null}" class="alert alert-danger col-md-8" th:text="${error}">
+
+                            </div>
+
+                            <button type="submit" class="col-md-1 btn btn-success btn-submit btn-style">Submit</button>
+                            <div class="col-md-2" style="margin-bottom:40px"></div>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-6"></div>
-                <div class="col-md-1">
-                    <!--  glyphicon glyphicon-remove-sign glyphicon glyphicon-remove-->
-                  <a href="/" class="glyphicon glyphicon-remove close" style="color:#052D4F; opacity:0.8;" ></a>
-                </div>
+
             </div>
 
-
-            <hr>
-
-            <form action="/publish" method="post" >
-                <input type="hidden" name="id" th:value="${id}">
-
-                <div class=" col-md-12 left input-table">
-                    <div class="col-md-5 form-group center" >
-                        <label class=" col-md-5 right" for="title">Job Title:</label>
-                        <input class=" col-md-7 form-control" type="text" th:value="${title}" id="title" name="title" placeholder="Job Title">
-                    </div>
-
-                    <!--需要改库 加个Company_Name-->
-                    <div class=" col-md-5 form-group center" >
-                        <label class=" col-md-5 " for="company">Company:</label>
-                        <input class=" col-md-7 form-control" type="text" th:value="${company}" id="company" name="company" placeholder="Input Company Name">
-                    </div>
-
-
-                    <div class="col-md-1 "></div>
-                </div>
-
-                <div class=" col-md-12 input-table left" >
-
-                    <div class=" col-md-5 form-group center">
-                        <label class=" col-md-5 right" for="tag">Add Tags: </label>
-                        <input class=" col-md-7 form-control"  type="text" th:value="${tag}" id="tag" name="tag" placeholder="Input tags, divided by comma">
-                    </div>
-                    <!--Workplace-->
-                    <div class=" col-md-5 form-group center" >
-                        <label class=" col-md-5 right" for="place">Workplace:</label>
-                        <input class=" col-md-7 form-control" type="text" th:value="${place}" id="place" name="place" placeholder="Write Down Workplace">
-                    </div>
-                    <div class="col-md-1 "></div>
-
-                </div>
-                <!--Detail/Description-->
-                <div class="col-md-11 form-group input-table left"  style="margin-top:20px">
-                    <label class=" col-md-3 left" for="description">Job Details: </label>
-                    <textarea class=" col-md-7 table form-control" name="description" id="description" th:text="${description}" style="height:180px"></textarea>
-                </div>
-
-
-                <!--Conatact Information
-                本来这里写的是 job link，现在改成联系信息，但是名称没改，还是joblink，
-                -->
-                <div class="col-md-11 form-group input-table left ">
-                    <label class=" col-md-3 left" for="title" >Apply Job Here:</label>
-                    <input class=" col-md-7 table_1 form-control"  type="text" th:value="${joblink}" id="joblink" name="joblink" placeholder="Contacts information such as link or email">
-
-                </div>
-
-                <div >
-                    <!-- 这个提示错误信息，放在 submit 左侧 显示 -->
-                    <div th:if="${error != null}" class="alert alert-danger col-md-8" th:text="${error}" >
-
-                    </div>
-
-                    <button type="submit" class="col-md-1 btn btn-success btn-submit btn-style" >Submit</button>
-                    <div class="col-md-2" style="margin-bottom:40px"></div>
-                </div>
-            </form>
         </div>
 
     </div>
-
-</div>
-
-    </div>
-<div class="col-md-2"></div>
+    <div class="col-md-2"></div>
 </div>
 </body>
 </html>

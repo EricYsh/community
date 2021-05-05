@@ -74,10 +74,10 @@
                                     <span th:text="${question.user.getName()}"></span>
                                 </h5>
                                 <div> comment contents</div>
-                                <div>
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                                    <span class="glyphicon glyphicon-comment"></span>
-                                    Time: <span class="pull-right" th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+                                <div class="menu">
+                                    <span class="glyphicon glyphicon-thumbs-up icon" style="margin-right: 10px"></span>
+                                    <span class="glyphicon glyphicon-comment icon"></span>
+                                    <span class="pull-right commentview" th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
                                 </div>
                             </div>
                         </div>
