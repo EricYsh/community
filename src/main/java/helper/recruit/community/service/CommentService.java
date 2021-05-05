@@ -30,7 +30,7 @@ public class CommentService {
             throw new CustomizeExpection(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
         }
 
-        if (comment.getType() == null || CommentTypeEnum.isExist(comment.getType())) {
+        if (comment.getType() == null || !CommentTypeEnum.isExist(comment.getType())) {
             throw new CustomizeExpection(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
 

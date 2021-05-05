@@ -1,14 +1,15 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${question.title}"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="/css/community.css" type="text/css">
     <script src="/js/jquery-3.6.0.min.js"></script>
-    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+
 </head>
 <body>
 
@@ -19,89 +20,138 @@
 
 <div class="row">
 
-
-
     <div class="col-md-1"></div>
 
     <div class="col-md-10">
-       <div class="container-fluid main card-style" style=" color:#052D4F; " >
-         <div class="row" >
-         <!--左边展示 Job details 部分-->
-         <div class="col-lg-8 col-md-11 col-sm-12 col-xs-12" style="display:block; height:600px margin-top:15px">
+        <div class="container-fluid main card-style" style=" color:#052D4F; ">
+            <div class="row">
+                <!--左边展示 Job details 部分-->
+                <div class="col-lg-8 col-md-11 col-sm-12 col-xs-12" style="display:block; height:600px margin-top:15px">
 
-            <h2><span th:text="${question.title}"></span></h2>
-            <h5>
-                <span th:text="${question.company.toUpperCase()}"></span>
-                <span th:text=" in "></span>
-                <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span>
-            </h5>
-            <span class="commentview">
+                    <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
+                        <h2><span th:text="${question.title}"></span></h2>
+                        <h5>
+                            <span th:text="${question.company.toUpperCase()}"></span>
+                            <span th:text=" in "></span>
+                            <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span>
+                        </h5>
+                        <span class="commentview">
                 | Publisher: <span th:text="${question.user.getName()}"></span>
                 | Views: <span th:text="${question.viewCount}"></span>
                 | Publish Time: <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
             </span>
 
-            <hr>
-            <h3>Job Details</h3>
-            <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" th:text="${question.description}"></div>
+                        <hr>
+                        <h3>Job Details</h3>
+                        <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" th:text="${question.description}"></div>
 
-            <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
-            <h3>Contact Information</h3>
-            <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" th:text="${question.joblink}"></div>
+                        <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
+                        <h3>Contact Information</h3>
+                        <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" th:text="${question.joblink}"></div>
 
-            <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
-            <a th:href="@{'/publish/'+${question.id}}" th:if="${session.user != null && session.user.getId() == question.getCreator()}">
-                <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
-                Edit
-            </a>
-            <!--右边部分-->
-        </div>
-
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            <!--            <div class="col-md-1  col-sm-1" th:if="${session.user != null}" >-->
-            <!--                <div class="post-style ">-->
-            <!--                    <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a left" style=" text-decoration:none; color:#43A9BF;" >-->
-            <!--                        <h2 style="font-weight:bold; margin-left:5px; margin-top:10px">POST</h2>-->
-            <!--                    </a>-->
-            <!--                </div>-->
-            <!--            </div>-->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                <div class="row">
-                    <div class="col-md-5">
-                    </div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-1">
-                        <!--  glyphicon glyphicon-remove-sign glyphicon glyphicon-remove-->
-                        <a href="/" class="glyphicon glyphicon-remove close" style="color:#052D4F; opacity:0.8;" ></a>
-                    </div>
-                </div>
-                <h4>Publisher</h4>
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#">
-                            <img class="media-object img-circle" th:src="${question.user.avatarUrl}">
+                        <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
+                        <a th:href="@{'/publish/'+${question.id}}"
+                           th:if="${session.user != null && session.user.getId() == question.getCreator()}">
+                            <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            Edit
                         </a>
                     </div>
-                    <div class="media-body">
-                        <h5 class="media-heading">
-                            <span th:text="${question.user.getName()}"></span>
-                        </h5>
+
+                    <!-- 展示回复们-->
+                    <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4>
+                        <span th:text="${question.getCommentCount()}"></span> comments
+                    </h4>
+                    <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" th:src="${question.user.avatarUrl}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <span th:text="${question.user.getName()}"></span>
+                                </h5>
+                                <div> comment contents</div>
+                                <div>
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                    Time: <span class="pull-right" th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+
+                    <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
+                    <!-- 用户头像 + 昵称
+                        回复框
+                        submit 按钮
+                    -->
+                    <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" id="comment_section">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" th:src="${question.user.avatarUrl}">
+                                </a>
+                            </div>
+                            <div class="media-body" style="padding-top: 15px">
+                                <h5 class="media-heading">
+                                    <span th:text="${question.user.getName()}"></span>
+                                </h5>
+                            </div>
+                        </div>
+                        <input type="hidden" id="question_id" th:value="${question.id}">
+                        <textarea class="form-control" rows="4" id="comment_content" style="margin:15px 0"></textarea>
+                        <button type="button" class="btn btn-info" style="float: right; margin:10px 0" onclick="post()">
+                            Reply
+                        </button>
+                    </div>
+
+                    <!--右边部分-->
                 </div>
+
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-1">
+                                <!--  glyphicon glyphicon-remove-sign glyphicon glyphicon-remove-->
+                                <a href="/" class="glyphicon glyphicon-remove close"
+                                   style="color:#052D4F; opacity:0.8;"></a>
+                            </div>
+                        </div>
+                        <h4>Publisher</h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-circle" th:src="${question.user.avatarUrl}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <span th:text="${question.user.getName()}"></span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <!--            相关推荐，之后可能补-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h4>Related Job Positions</h4>
+                    </div>
+
+                </div>
+
             </div>
-            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<!--            相关推荐，之后可能补--> <div class="col-lg-8 col-md-11 col-sm-12 col-xs-12" style="display:block; height:600px">
-
         </div>
-<!--            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
-<!--                <h4>Related Job Positions</h4>-->
-<!--            </div>-->
-
-        </div>
-
-    </div>
-</div>
     </div>
     <div class="col-md-1"></div>
 </div>

@@ -1,15 +1,25 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Recruit Helper</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="css/community.css" type="text/css">
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </head>
+<!--未登录就评论的处理-->
+<script type="application/javascript">
+    window.onload = function () {
+        var closable = window.localStorage.getItem("closable");
+        if (closable == "true") {
+            window.close();
+            window.localStorage.removeItem("closable");
+        }
+    }
+</script>
+
 <body>
 
 <!--自适应背景调用它<div class="demo"></div>-->
@@ -20,81 +30,82 @@
 <div class="row">
     <div class="col-md-1 "></div>
     <div class="col-md-10 ">
-         <div class="container-fluid main card-style" style=" color:#052D4F; " >
+        <div class="container-fluid main card-style" style=" color:#052D4F; ">
 
-    <div class="row" >
-        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="display:block; height:600px">
-            <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true" ></span>Discover</h2>
-            <hr>
-            <!--循环展示职业信息-->
-            <div class="media" th:each="question : ${pagination.questions}">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object" th:src="${question.user.avatarUrl}">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
-                    </h4>
-                    <span th:text="${question.company.toUpperCase()}"></span>
-                    <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span><br>
-                    <span class="commentview">
+            <div class="row">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="display:block; height:600px">
+                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Discover</h2>
+                    <hr>
+                    <!--循环展示职业信息-->
+                    <div class="media" th:each="question : ${pagination.questions}">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" th:src="${question.user.avatarUrl}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <a th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
+                            </h4>
+                            <span th:text="${question.company.toUpperCase()}"></span>
+                            <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span><br>
+                            <span class="commentview">
                         <span th:text="${question.commentCount}"></span> comments
                         • <span th:text="${question.viewCount}"></span> views
                         • <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
                     </span>
+                        </div>
+                    </div>
+                    <!--分页功能在这里-->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <!-- 最前页 & 前一页-->
+                            <li th:if="${pagination.showFirstPage}">
+                                <a href="/?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li th:if="${pagination.showPrevious}">
+                                <a th:href="@{/(page=${pagination.page - 1})}" aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                </a>
+                            </li>
+                            <!-- 分页 逻辑-->
+                            <li th:each="page : ${pagination.pages}" th:class="${pagination.page==page}? 'active':''">
+                                <a th:href="@{/(page=${page})}" th:text="${page}">
+
+                                </a>
+                            </li>
+                            <!-- 最后页 & 后一页-->
+                            <li th:if="${pagination.showNext}">
+                                <a th:href="@{/(page=${pagination.page+1})}" aria-label="Previous">
+                                    <span aria-hidden="true">&gt;</span>
+                                </a>
+                            </li>
+                            <li th:if="${pagination.showEndPage}">
+                                <a th:href="@{/(page=${pagination.getTotalPage()})}" aria-label="Previous">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!--发布职位信息-->
                 </div>
+                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-1  col-sm-1" th:if="${session.user != null}">
+                        <div class="post-style ">
+                            <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a left"
+                               style=" text-decoration:none; color:#43A9BF;">
+                                <h2 style="font-weight:bold; margin-left:5px; margin-top:10px">POST</h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <!--分页功能在这里-->
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <!-- 最前页 & 前一页-->
-                    <li th:if="${pagination.showFirstPage}">
-                        <a href="/?page=1" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li th:if="${pagination.showPrevious}">
-                        <a th:href="@{/(page=${pagination.page - 1})}" aria-label="Previous">
-                            <span aria-hidden="true">&lt;</span>
-                        </a>
-                    </li>
-                    <!-- 分页 逻辑-->
-                    <li th:each="page : ${pagination.pages}" th:class="${pagination.page==page}? 'active':''">
-                        <a th:href="@{/(page=${page})}" th:text="${page}">
 
-                        </a>
-                    </li>
-                    <!-- 最后页 & 后一页-->
-                    <li th:if="${pagination.showNext}">
-                        <a th:href="@{/(page=${pagination.page+1})}" aria-label="Previous">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
-                    </li>
-                    <li th:if="${pagination.showEndPage}">
-                        <a th:href="@{/(page=${pagination.getTotalPage()})}" aria-label="Previous">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
-        <!--发布职位信息-->
         </div>
-        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-1  col-sm-1" th:if="${session.user != null}" >
-            <div class="post-style ">
-                <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a left" style=" text-decoration:none; color:#43A9BF;" >
-                    <h2 style="font-weight:bold; margin-left:5px; margin-top:10px">POST</h2>
-                </a>
-            </div>
-            </div>
-        </div>
-
-</div>
-
-</div>
     </div>
     <div class="col-md-1 "></div>
 </div>

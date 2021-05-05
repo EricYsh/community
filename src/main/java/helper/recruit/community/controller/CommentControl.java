@@ -32,7 +32,7 @@ public class CommentControl {
 
         //JSON { key:value} 格式，前后端传输
         Comment comment = new Comment();
-        comment.setParentId(commentDTO.getParentID());
+        comment.setParentId(commentDTO.getParentId());
         comment.setContent(commentDTO.getContent());
         comment.setType(commentDTO.getType());
         comment.setGmtCreate(System.currentTimeMillis());

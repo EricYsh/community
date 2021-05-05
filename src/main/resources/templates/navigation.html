@@ -4,9 +4,10 @@
 <body>
 <div th:fragment="nav">
     <nav class="navbar navbar-default page__menu menu" style="border:0px solid #052D4F; ">
-        <div class="container-fluid navbar—style" >
+        <div class="container-fluid navbar—style">
             <div class="navbar-header ">
-                <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed " data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only ">Recruit Helper</span>
 
                 </button>
@@ -15,11 +16,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <form class="navbar-form navbar-left display-style"  >
-                    <span  ></span>
+                <form class="navbar-form navbar-left display-style">
+                    <span></span>
                     <div class="form-group display-style" style=" display:flex; justify-content:center;margin-top:7px">
-                        <input type="text" class="form-control border-style"  >
-                        <button type="submit" class=" glyphicon glyphicon-search icon-style search-button" aria-hidden="true"></button>
+                        <input type="text" class="form-control border-style">
+                        <button type="submit" class=" glyphicon glyphicon-search icon-style search-button"
+                                aria-hidden="true"></button>
                     </div>
 
                 </form>
@@ -28,26 +30,28 @@
                     <!--<li th:if="${session.user != null}">
                         <a href="/publish" style="color:white; font-size: 15px" >POST</a>
                     </li>-->
-                    <li class="dropdown" th:if="${session.user != null}"  style=" height:52px">
-                        <!--                    menu__group menu__link r-link text-underlined-->
+                    <li class="dropdown" th:if="${session.user != null}" style=" height:52px">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false" style="color:white; font-size: 15px; font-weight:normal; " >
+                           aria-expanded="false" style="color:white; font-size: 15px; font-weight:normal; ">
                             <!-- 显示登录后的用户名，和下拉的标签 -->
                             <div style="margin-top:-5px">
-                                <span><img class="img-circle" th:src="${session.user.avatarUrl}" style="width:35px; height:35px"></span>
+                                <span><img class="img-circle" th:src="${session.user.avatarUrl}"
+                                           style="width:35px; height:35px"></span>
                                 <span th:text="${session.user.getName()}"></span>
                                 <span class="caret"></span>
                             </div>
 
                         </a>
 
-                        <ul class="dropdown-menu" >
-                            <li class="menu__group menu__link r-link text-underlined"><a href="/yourpost/questions">Your Post</a></li>
+                        <ul class="dropdown-menu">
+                            <li class="menu__group menu__link r-link text-underlined"><a href="/yourpost/questions">Your
+                                Post</a></li>
                             <li class="menu__group menu__link r-link text-underlined"><a href="/logout">Logout</a></li>
                         </ul>
                     </li>
                     <li th:if="${session.user == null}" class="menu__group menu__link r-link text-underlined">
-                        <a style="color:white; font-size: 15px; font-weight:normal" href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">
+                        <a style="color:white; font-size: 15px; font-weight:normal"
+                           href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">
                             Login
                         </a>
                     </li>
