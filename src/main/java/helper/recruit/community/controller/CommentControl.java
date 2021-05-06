@@ -6,6 +6,7 @@ import helper.recruit.community.exception.CustomizeErrorCode;
 import helper.recruit.community.model.Comment;
 import helper.recruit.community.model.User;
 import helper.recruit.community.service.CommentService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +26,14 @@ public class CommentControl {
     public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
                        HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        if (user == null){
+        // 用户登陆后才能发布评论
+        if (user == null) {
             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
+        // 检验回复内容不能为空
+        if (commentCreateDTO == null || commentCreateDTO.getContent() == null || commentCreateDTO.getContent() == "")
+            return ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
+//        if (commentCreateDTO==null || StringUtils.isBlank(commentCreateDTO.getContent()))
 
         //JSON { key:value} 格式，前后端传输
         Comment comment = new Comment();

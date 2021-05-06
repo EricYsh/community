@@ -7,7 +7,8 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode{
     NO_LOGIN(2003,"Please log in and try again."),
     SYS_ERROR(2004, "Something wrong, please try later!"),
     TYPE_PARAM_WRONG(2005, "Wrong comment type or comment does not exist."),
-    COMMENT_NOT_FOUND(2006,"The comment doesn't exist")
+    COMMENT_NOT_FOUND(2006,"The comment doesn't exist"),
+    CONTENT_IS_EMPTY(2007,"Empty reply is illegal!")
     ;
 
     @Override
