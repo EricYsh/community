@@ -215,3 +215,8 @@ input {
 .menu .icon:hover {
     color: #052D4F;
 }
+
+/*标签们 的 间距*/
+.job-tag{
+    margin-right: 10px;
+}

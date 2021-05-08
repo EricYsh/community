@@ -24,15 +24,16 @@ public class QuestionController {
 
     @GetMapping("question/{id}")
     public String question(@PathVariable(name = "id") Long id,
-                           Model model){
+                           Model model) {
         QuestionDTO questionDTO = questionService.getById(id);
-
+        List<QuestionDTO> relatedQuestions = questionService.selectRelated(questionDTO);
         List<CommentDTO> comments = commentService.listByQuestionId(id);
 
         // 每次打开问题后，累加查看次数
         questionService.incView(id); //访问页面调用这个方法
         model.addAttribute("question", questionDTO);
         model.addAttribute("comments", comments);
+        model.addAttribute("relatedQuestions", relatedQuestions);
         return "question";
     }
 }

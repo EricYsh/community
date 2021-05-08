@@ -10,13 +10,16 @@ import helper.recruit.community.mapper.UserMapper;
 import helper.recruit.community.model.Question;
 import helper.recruit.community.model.QuestionExample;
 import helper.recruit.community.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -53,7 +56,9 @@ public class QuestionService {
         paginationDTO.setPagination(totalPage, page);
 
         Integer offset = size * (page - 1);
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
+        QuestionExample questionExample = new QuestionExample();
+        questionExample.setOrderByClause("gmt_create desc");//倒序排序问题
+        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
 
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
@@ -118,18 +123,18 @@ public class QuestionService {
     public QuestionDTO getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         // 问题不存的异常处理
-        if (question==null){
+        if (question == null) {
             throw new CustomizeExpection(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO); // copy source attribute to target
         User user = userMapper.selectByPrimaryKey(question.getCreator());//get user
         questionDTO.setUser(user);
-        return  questionDTO;
+        return questionDTO;
     }
 
     public void createOrUpdate(Question question) {
-        if (question.getId() == null){
+        if (question.getId() == null) {
             // create a new
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
@@ -137,7 +142,7 @@ public class QuestionService {
             question.setLikeCount(0);
             question.setCommentCount(0);
             questionMapper.insert(question);
-        }else{
+        } else {
             // update
 //            question.setGmtModified(System.currentTimeMillis());
             Question updateQuestion = new Question();
@@ -153,7 +158,7 @@ public class QuestionService {
             example.createCriteria().andIdEqualTo(question.getId());
             int updated = questionMapper.updateByExampleSelective(updateQuestion, example);
             // 问题不存的异常处理
-            if (updated != 1){
+            if (updated != 1) {
                 throw new CustomizeExpection(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
@@ -174,5 +179,23 @@ public class QuestionService {
         record.setViewCount(1);
         questionExtMapper.incView(record);
 
+    }
+
+    public List<QuestionDTO> selectRelated(QuestionDTO questionDTO) {
+        if (StringUtils.isBlank(questionDTO.getTag())) {
+            return new ArrayList<>();
+        }
+        String[] tag = StringUtils.split(questionDTO.getTag(), ",");
+        String regexpTag = Arrays.stream(tag).collect(Collectors.joining("|"));
+        Question question = new Question();
+        question.setId(questionDTO.getId());
+        question.setTag(regexpTag);
+        List<Question> questions = questionExtMapper.selectRelated(question);
+        List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
+            QuestionDTO questionDTO1 = new QuestionDTO();
+            BeanUtils.copyProperties(q, questionDTO1);
+            return questionDTO1;
+        }).collect(Collectors.toList());
+        return questionDTOS;
     }
 }

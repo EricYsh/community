@@ -39,7 +39,14 @@
                 | Publisher: <span th:text="${question.user.getName()}"></span>
                 | Views: <span th:text="${question.viewCount}"></span>
                 | Publish Time: <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+                            >
             </span>
+                        <!--编辑功能-->
+                        <a th:href="@{'/publish/'+${question.id}}"
+                           th:if="${session.user != null && session.user.getId() == question.getCreator()}">
+                            <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            Edit
+                        </a>
 
                         <hr>
                         <h3>Job Details</h3>
@@ -49,12 +56,12 @@
                         <h3>Contact Information</h3>
                         <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" th:text="${question.joblink}"></div>
 
+                        <!--展示标签-->
                         <hr class="col-lg-12 col-md-11 col-sm-12 col-xs-12">
-                        <a th:href="@{'/publish/'+${question.id}}"
-                           th:if="${session.user != null && session.user.getId() == question.getCreator()}">
-                            <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
-                            Edit
-                        </a>
+                        <span class="label label-primary job-tag" th:each="tag:${question.tag.split(',')}">
+                            <span class="glyphicon glyphicon-tag"></span>
+                            <span class="label label-primary" th:text="${tag}"></span>
+                        </span>
                     </div>
 
                     <!-- 展示回复们-->
@@ -140,6 +147,11 @@
                     <!--            相关推荐，之后可能补-->
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <h4>Related Job Positions</h4>
+                        <ul>
+                            <li th:each="related: ${relatedQuestions}">
+                                <a th:href="@{'/question/'+${related.id}}" th:text="${related.title}"></a>
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
