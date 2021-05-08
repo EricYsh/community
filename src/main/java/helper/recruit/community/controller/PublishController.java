@@ -1,10 +1,13 @@
 package helper.recruit.community.controller;
 
+import helper.recruit.community.cache.TagCache;
 import helper.recruit.community.dto.QuestionDTO;
+import helper.recruit.community.dto.TagDTO;
 import helper.recruit.community.mapper.QuestionMapper;
 import helper.recruit.community.service.QuestionService;
 import helper.recruit.community.model.Question;
 import helper.recruit.community.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +27,10 @@ public class PublishController {
     @Autowired
     private QuestionService questionService;
 
+    // 编辑的时候
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name="id") Long id,
-                       Model model){
+    public String edit(@PathVariable(name = "id") Long id,
+                       Model model) {
         // 点击后获取 question id 获取到 question
         QuestionDTO question = questionService.getById(id);
         // 查询后回显到页面
@@ -38,14 +42,18 @@ public class PublishController {
         model.addAttribute("place", question.getPlace());
         // 编辑edit 的特殊处理，获取id作为唯一标识，和 new post 分开
         model.addAttribute("id", question.getId());
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
+    // 一开始创建的时候
     @GetMapping("/publish")
-    public String publish() {
+    public String publish(Model model) {
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
+    // 返回错误信息的时候
     @PostMapping("/publish")
     public String doPublish(
             @RequestParam("title") String title,
@@ -54,7 +62,7 @@ public class PublishController {
             @RequestParam("joblink") String joblink,
             @RequestParam("company") String company,
             @RequestParam("place") String place,
-            @RequestParam(value="id", required = false) Long id,
+            @RequestParam(value = "id", required = false) Long id,
             HttpServletRequest request,
             Model model
     ) {
@@ -64,6 +72,8 @@ public class PublishController {
         model.addAttribute("joblink", joblink);
         model.addAttribute("company", company);
         model.addAttribute("place", place);
+
+        model.addAttribute("tags", TagCache.get());
 
         if (title == null || title.equals("")) {
             model.addAttribute("error", "Please input title!");
@@ -94,6 +104,12 @@ public class PublishController {
             model.addAttribute("error", "Please input job link!");
             return "publish";
         }
+
+//        String invalid = TagCache.filterInvalid(tag);
+//        if (StringUtils.isNotBlank(invalid)) {
+//            model.addAttribute("error", "Illegal tag: " + invalid);
+//            return "publish";
+//        }
 
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
