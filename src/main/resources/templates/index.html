@@ -18,6 +18,7 @@
             window.localStorage.removeItem("closable");
         }
     }
+
 </script>
 
 <body>
@@ -31,31 +32,58 @@
     <div class="col-md-1 "></div>
     <div class="col-md-10 ">
         <div class="container-fluid main card-style" style=" color:#052D4F; ">
+            <!-- 开头第一行-->
+            <div class="row" style="margin-bottom: -5px">
+                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8" style="display:block;">
+                    <!---->
+                    <h2 style="font-weight:bold; " >
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 35px; "></span>
+                        Discover
+                    </h2>
+                </div>
 
-            <div class="row">
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="display:block;">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Discover</h2>
-                    <hr>
-                    <!--循环展示职业信息-->
-                    <div class="media" th:each="question : ${pagination.questions}">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" th:src="${question.user.avatarUrl}">
+                <!--发布职位信息-->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="col-md-3  col-sm-3" th:if="${session.user != null}">
+                        <div class="post-style ">
+                            <!--glyphicon glyphicon-plus-sign-->
+                            <a href="/publish" class="  post-a left"
+                               style=" text-decoration:none; color:#43A9BF;">
+                                <h3 style="font-weight:bold; margin-left:5px; margin-top:17px; margin-right:5px;">POST</h3>
+                                <span class="glyphicon glyphicon-plus-sign" ></span>
                             </a>
                         </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">
-                                <a th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
-                            </h4>
-                            <span th:text="${question.company.toUpperCase()}"></span>
-                            <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span><br>
-                            <span class="commentview">
-                        <span th:text="${question.commentCount}"></span> comments
-                        • <span th:text="${question.viewCount}"></span> views
-                        • <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
-                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <!--后面部分整行占有-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display:block;">
+                    <hr style="margin-top:0px;  ">
+                    <!--循环展示职业信息-->
+                    <div style="height:380px; margin-right:5px; ">
+                        <div class="media" th:each="question : ${pagination.questions}">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" th:src="${question.user.avatarUrl}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
+                                </h4>
+                                <span th:text="${question.company.toUpperCase()}"></span>
+                                <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span><br>
+                                <span class="commentview">
+                                   <span th:text="${question.commentCount}"></span> comments
+                                    • <span th:text="${question.viewCount}"></span> views
+                                    • <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+                                </span>
+                            </div>
                         </div>
                     </div>
+
                     <!--分页功能在这里-->
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
@@ -87,26 +115,15 @@
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
-
                         </ul>
                     </nav>
-                    <!--发布职位信息-->
-                </div>
-                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-md-1  col-sm-1" th:if="${session.user != null}">
-                        <div class="post-style ">
-                            <a href="/publish" class=" glyphicon glyphicon-plus-sign post-a left"
-                               style=" text-decoration:none; color:#43A9BF;">
-                                <h2 style="font-weight:bold; margin-left:5px; margin-top:10px">POST</h2>
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
+                </div>
             </div>
-
         </div>
+
     </div>
+
     <div class="col-md-1 "></div>
 </div>
 

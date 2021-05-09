@@ -127,7 +127,7 @@ img.media-object {
 }
 
 .post-a {
-    font-size: 50px;
+    font-size: 45px;
 }
 
 .card-style {
@@ -224,4 +224,9 @@ input {
 .publish-tag-tab{
     display: none;
     margin-top: 10px;
+}
+.home_button{
+ margin-top:15px;
+  margin-right:10px;
+  margin-left:-10px
 }
