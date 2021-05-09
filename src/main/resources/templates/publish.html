@@ -16,43 +16,46 @@
 <div class="demo"></div>
 <div class="row">
 
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-2 col-gl-2 col-sm-1 col-xs-1"></div>
+    <div class="col-md-8 col-gl-8 col-sm-10 col-xs-10">
 
         <!--这端数据获取需要注意，因为和设计挺多不一样的地方，所以改的比较多-->
         <div class="container-fluid main1 card-style" style=" color:#052D4F; ">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="row">
-                        <div class="col-md-5">
-                            <h2><span class="glyphicon glyphicon-plus plus-icon" aria-hidden="true"></span>Post New Job
+                        <div class="col-lg-5 col-md-7 col-sm-9 col-xs-9">
+                            <h2 style="font-weight:bold;">
+                                <span class="glyphicon glyphicon-plus plus-icon" aria-hidden="true"></span>Post Job
                             </h2>
                         </div>
-                        <div class="col-md-6"></div>
-                        <div class="col-md-1">
+                        <div class="col-lg-6 col-md-4 col-sm-1 col-xs-1"></div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
                             <!--  glyphicon glyphicon-remove-sign glyphicon glyphicon-remove-->
-                            <a href="/" class="glyphicon glyphicon-remove close"
-                               style="color:#052D4F; opacity:0.8;"></a>
+                            <h1>
+                                <a href="/" class="glyphicon glyphicon-remove-sign"
+                                   style="font-size:45px; color:#43A9BF; opacity:1.0; margin-top:-5px;margin-bottom：-15px; text-decoration:none;"></a>
+                            </h1>
                         </div>
                     </div>
 
 
-                    <hr>
+                    <hr style="margin-top: -10px">
 
                     <form action="/publish" method="post">
                         <input type="hidden" name="id" th:value="${id}">
 
                         <div class=" col-md-12 left input-table">
-                            <div class="col-md-5 form-group center">
-                                <label class=" col-md-5 right" for="title">Job Title:</label>
+                            <div class="col-md-5 form-group left">
+                                <label class=" col-md-5 left" for="title">Job Title:</label>
                                 <input class=" col-md-7 form-control" type="text" th:value="${title}" id="title"
                                        name="title" placeholder="Job Title"
                                        autocomplete="off">
                             </div>
 
                             <!--需要改库 加个Company_Name-->
-                            <div class=" col-md-5 form-group center">
-                                <label class=" col-md-5 " for="company">Company:</label>
+                            <div class=" col-md-6 form-group left">
+                                <label class=" col-md-5 left" for="company">Company:</label>
                                 <input class=" col-md-7 form-control" type="text" th:value="${company}" id="company"
                                        name="company" placeholder="Input Company Name"
                                        autocomplete="off">
@@ -62,11 +65,11 @@
                             <div class="col-md-1 "></div>
                         </div>
 
-                        <div class=" col-md-12 input-table left">
+                        <div class=" col-md-12 left input-table">
                             <!--Conatact Information
                                                     本来这里写的是 job link，现在改成联系信息，不过名称没改，还是joblink，
                                                     -->
-                            <div class="col-md-5 form-group center">
+                            <div class="col-md-5 form-group left">
                                 <label class=" col-md-5 left" for="title">Contact:</label>
                                 <input class=" col-md-7 form-control" type="text" th:value="${joblink}" id="joblink"
                                        name="joblink" placeholder="Contacts information such as link or email"
@@ -74,8 +77,8 @@
                             </div>
 
                             <!--Workplace-->
-                            <div class="col-md-5 form-group center">
-                                <label class=" col-md-5 right" for="place">Workplace:</label>
+                            <div class="col-md-6 form-group left">
+                                <label class=" col-md-5 left" for="place">Workplace:</label>
                                 <input class=" col-md-7 form-control" type="text" th:value="${place}" id="place"
                                        name="place" placeholder="Write Down Workplace"
                                        autocomplete="off">
@@ -84,80 +87,101 @@
 
                         </div>
                         <!--Detail/Description-->
-                        <div class="col-md-11 form-group input-table left" style="margin-top:20px">
-                            <label class=" col-md-3 left" for="description">Job Details: </label>
-                            <textarea class=" col-md-7 table form-control" name="description" id="description"
-                                      th:text="${description}" style="height:180px"></textarea>
+                        <div class="col-md-12 form-group job_detail left" style="margin-top:20px">
+                            <label class=" col-md-2 left" for="description">Job Details: </label>
+                            <textarea class=" col-md-8 table form-control" name="description" id="description"
+                                      th:text="${description}"
+                                      style="height:180px; border: 2px solid #ccc; "></textarea>
+                            <div class="col-md-2 "></div>
                         </div>
 
-                        <div class="col-md-10 form-group">
-                            <label class="col-md-2" for="tag">Add Tags:</label>
-                            <input type="text" class="form-control col-md-6" th:value="${tag}" id="tag" name="tag"
-                                   autocomplete="off"
-                                   placeholder="Select or Input tags, divided by comma"
-                                   onclick="showSelectTag()">
-                            <div id="select-tag" class="publish-tag-tab">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
-                                        th:class="${selectCategoryStat.first ? 'active':''}">
-                                        <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"
-                                           data-toggle="tab" th:text="${selectCategory.categoryName}"></a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div role="tabpanel" th:id="${selectCategory.categoryName}"
-                                         th:each="selectCategory: ${tags}"
-                                         th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
-                                <span>
-                                    <span th:each="selectTag: ${selectCategory.tags}">
-                                    <span class="community-tag glyphicon glyphicon-tags" onclick="selectTag(this)"
-                                          th:data-tag="${selectTag}"
-                                          th:text="${' '+selectTag}">
-                                    </span>
-                                </span>
-                                </span>
+                        <!--tag的选择-->
+
+                        <div class="col-md-12 form-group ">
+                            <div class=" col-md-12 left job_detail" style="margin-bottom:10px">
+                                <label class="col-md-2 " for="tag">Add Tags:</label>
+                                <input type="text" class="form-control col-md-8" th:value="${tag}" id="tag" name="tag"
+                                       autocomplete="off"
+                                       placeholder="Select or Input tags, divided by comma"
+                                       onclick="showSelectTag()">
+                                <div class="col-md-2 "></div>
+                            </div>
+
+                            <div class="col-md-12 form-group ">
+                                <div class="col-md-1"></div>
+                                <div id="select-tag" class="publish_tag_tab col-md-10" >
+                                    <ul class="nav nav-pills" role="tablist">
+                                        <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
+                                            th:class="${selectCategoryStat.first ? 'active':''}"
+                                            style="border-radius:20px; margin-right:5px; background-color:#43A9BF;margin-bottom:5px"
+                                        >
+                                            <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home"
+                                               role="tab"
+                                               data-toggle="tab" th:text="${selectCategory.categoryName}"
+                                               style="color:white; border-radius:20px; "
+                                            >
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" style="margin-top:5px;">
+                                        <div role="tabpanel" th:id="${selectCategory.categoryName}"
+                                             th:each="selectCategory: ${tags}"
+                                             th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
+                                      <span>
+                                        <span th:each="selectTag: ${selectCategory.tags}" style="margin-right:9">
+                                            <!--glyphicon glyphicon-tags-->
+                                        <span class="community-tag glyphicon glyphicon-tags " onclick="selectTag(this)"
+                                              th:data-tag="${selectTag}"
+                                              th:text="${' '+selectTag}">
+                                        </span>
+                                        </span>
+                                      </span>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-1"></div>
                             </div>
+
                         </div>
 
-<!--                        <div class=" col-md-10 form-group">-->
-<!--                            <label class="col-md-2 right" for="tag">Add Tags: </label>-->
-<!--                            <input class="col-md-6 form-control" type="text" th:value="${tag}" id="tag" name="tag"-->
-<!--                                   placeholder="Input tags, divided by comma"-->
-<!--                                   onclick="showSelectTag()" autocomplete="off">-->
-<!--                            &lt;!&ndash;选择标签&ndash;&gt;-->
-<!--                            <div id="select-tag" class="publish-tag-tab">-->
-<!--                                <ul class="nav nav-tabs" role="tablist">-->
-<!--                                    <li role="presentation" th:each="selectCategory: ${tags}">-->
-<!--                                        <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"-->
-<!--                                           data-toggle="tab" th:text="${selectCategory.categoryName}"></a>-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                                <div class="tab-content">-->
-<!--                                    <div role="tabpanel" class="tag-pane" th:id="${selectCategory.categoryName}"-->
-<!--                                         th:each="selectCategory: ${tags}">-->
-<!--                                        <span class="label label-info" th:each="selectTag: ${selectCategory.tags}">-->
-<!--                                            <span class="glyphicon glyphicon-tags" onclick="selectTag(this)"-->
-<!--                                              th:data-tag="${selectTag}"-->
-<!--                                              th:text="${selectTag}"></span>-->
-<!--                                        </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>&lt;!&ndash;选择标签结束&ndash;&gt;-->
-<!--                        </div>-->
+                        <!--                        <div class=" col-md-10 form-group">-->
+                        <!--                            <label class="col-md-2 right" for="tag">Add Tags: </label>-->
+                        <!--                            <input class="col-md-6 form-control" type="text" th:value="${tag}" id="tag" name="tag"-->
+                        <!--                                   placeholder="Input tags, divided by comma"-->
+                        <!--                                   onclick="showSelectTag()" autocomplete="off">-->
+                        <!--                            &lt;!&ndash;选择标签&ndash;&gt;-->
+                        <!--                            <div id="select-tag" class="publish-tag-tab">-->
+                        <!--                                <ul class="nav nav-tabs" role="tablist">-->
+                        <!--                                    <li role="presentation" th:each="selectCategory: ${tags}">-->
+                        <!--                                        <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"-->
+                        <!--                                           data-toggle="tab" th:text="${selectCategory.categoryName}"></a>-->
+                        <!--                                    </li>-->
+                        <!--                                </ul>-->
+                        <!--                                <div class="tab-content">-->
+                        <!--                                    <div role="tabpanel" class="tag-pane" th:id="${selectCategory.categoryName}"-->
+                        <!--                                         th:each="selectCategory: ${tags}">-->
+                        <!--                                        <span class="label label-info" th:each="selectTag: ${selectCategory.tags}">-->
+                        <!--                                            <span class="glyphicon glyphicon-tags" onclick="selectTag(this)"-->
+                        <!--                                              th:data-tag="${selectTag}"-->
+                        <!--                                              th:text="${selectTag}"></span>-->
+                        <!--                                        </span>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>&lt;!&ndash;选择标签结束&ndash;&gt;-->
+                        <!--                        </div>-->
 
-                        <div>
+                        <div class="col-md-12">
                             <!-- 这个提示错误信息，放在 submit 左侧 显示 -->
-                            <div th:if="${error != null}" class="alert alert-danger col-md-8" th:text="${error}">
+                            <div class="col-md-1"></div>
+                            <div th:if="${error != null}" class="alert alert-danger col-md-10" th:text="${error}">
 
                             </div>
 
                             <button type="submit" class="col-md-1 btn btn-success btn-submit btn-style">Submit</button>
-                            <div class="col-md-2" style="margin-bottom:40px">
-
-                            </div>
+                            <div class="col-md-1" style="margin-bottom:40px"></div>
                         </div>
+
+
                     </form>
                 </div>
 
@@ -166,7 +190,7 @@
         </div>
 
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2 col-gl-2 col-sm-1 col-xs-1"></div>
 </div>
 </body>
 </html>

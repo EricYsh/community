@@ -154,12 +154,13 @@ input {
     /*border:0px solid #052D4F;*/
     border: 2px solid #052D4F;
     display: block;
+    margin-left: 10px
 }
 
 .table_1 {
     border-radius: 20px;
     /*border:0px solid #052D4F;*/
-    border: 2px solid #052D4F;
+    border: 2px solid #43A9BF;
     display: block;
 
 
@@ -181,7 +182,7 @@ input {
 }
 
 .input-table {
-    margin-left: -50px;
+    margin-left: -30px;
 }
 
 .other-table {
@@ -189,9 +190,12 @@ input {
 }
 
 .btn-style {
+    background-color:#43A9BF;
     border-radius: 20px;
-" position: absolute;
-    border: 0px solid #052D4F;
+    font-weight:bold;
+    /*position: absolute;*/
+    border: 0px solid #43A9BF;
+    border-color:#43A9BF
     bottom: 0;
 }
 
@@ -218,15 +222,20 @@ input {
 
 /*标签们 的 间距*/
 .job-tag{
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
-.publish-tag-tab{
-    display: none;
-    margin-top: 10px;
-}
+
 .home_button{
  margin-top:15px;
   margin-right:10px;
   margin-left:-10px
+}
+
+.job_detail{
+   margin-left:-25px
+}
+
+.publish_tag_tab{
+    display: none;
 }
