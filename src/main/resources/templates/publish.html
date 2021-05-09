@@ -128,7 +128,7 @@
                                              th:each="selectCategory: ${tags}"
                                              th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
                                       <span>
-                                        <span th:each="selectTag: ${selectCategory.tags}" style="margin-right:9">
+                                        <span th:each="selectTag: ${selectCategory.tags}" >
                                             <!--glyphicon glyphicon-tags-->
                                         <span class="community-tag glyphicon glyphicon-tags " onclick="selectTag(this)"
                                               th:data-tag="${selectTag}"

@@ -70,8 +70,8 @@
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">
-                                    <a th:href="@{'question/'+${question.id}}" th:text="${question.title}"></a>
+                                <h4 class="media-heading bold">
+                                    <a th:href="@{'question/'+${question.id}}" th:text="${question.title}" ></a>
                                 </h4>
                                 <span th:text="${question.company.toUpperCase()}"></span>
                                 <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span><br>

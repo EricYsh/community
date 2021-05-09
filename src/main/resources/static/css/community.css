@@ -239,3 +239,18 @@ input {
 .publish_tag_tab{
     display: none;
 }
+
+.ul_style{
+ display:flex;
+ border: 3px solid #052D4F;
+ background-color:#43A9BF;
+  border-radius: 20px;
+}
+
+.bold{
+  font-weight:bold;
+}
+
+.flex{
+  display:flex;
+}
