@@ -154,13 +154,10 @@
 
                     <!--分割线 tag-->
                     <hr>
-                    <div>
-                        <h3 class="flex" >
-                            <span class="label label-primary job-tag" th:each="tag:${question.tag.split(',')}" >
-                                <span class="glyphicon glyphicon-tag"></span>
-                                <span class="label label-primary" th:text="${tag}" ></span>
-                           </span>
-                        </h3>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " style=" margin-top:-30px">
+                            <span class="job-tag " th:each="tag:${question.tag.split(',')}" style=" background-color:#43A9BF;border-radius:10px;  border: 3px solid #43A9BF " >
+                                <span class="glyphicon glyphicon-tag bold" th:text="${tag}" style="margin:10px; font-size:14px; color:white;" > </span>
+                            </span>
                     </div>
 
 
