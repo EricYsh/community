@@ -183,10 +183,11 @@ input {
 
 .input-table {
     margin-left: -30px;
+
 }
 
-.other-table {
-    margin-left: -25px;
+.other_table {
+    margin-top: 5px;
 }
 
 .btn-style {

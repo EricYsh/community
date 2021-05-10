@@ -24,13 +24,13 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="row">
-                        <div class="col-lg-5 col-md-7 col-sm-9 col-xs-9">
+                        <div class="col-lg-5 col-md-7 col-sm-8 col-xs-8">
                             <h2 style="font-weight:bold;">
                                 <span class="glyphicon glyphicon-plus plus-icon" aria-hidden="true"></span>Post Job
                             </h2>
                         </div>
                         <div class="col-lg-6 col-md-4 col-sm-1 col-xs-1"></div>
-                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                        <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3">
                             <!--  glyphicon glyphicon-remove-sign glyphicon glyphicon-remove-->
                             <h1>
                                 <a href="/" class="glyphicon glyphicon-remove-sign"
@@ -45,41 +45,41 @@
                     <form action="/publish" method="post">
                         <input type="hidden" name="id" th:value="${id}">
 
-                        <div class=" col-md-12 left input-table">
-                            <div class="col-md-5 form-group left">
-                                <label class=" col-md-5 left" for="title">Job Title:</label>
-                                <input class=" col-md-7 form-control" type="text" th:value="${title}" id="title"
+                        <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 input-table">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group left ">
+                                <label class="col-lg-5  col-md-5 col-sm-7 col-xs-7 left other_table" for="title">Job Title:</label>
+                                <input class="col-lg-7  col-md-7 col-sm-5 col-xs-5 form-control" type="text" th:value="${title}" id="title"
                                        name="title" placeholder="Job Title"
                                        autocomplete="off">
                             </div>
 
                             <!--需要改库 加个Company_Name-->
-                            <div class=" col-md-6 form-group left">
-                                <label class=" col-md-5 left" for="company">Company:</label>
-                                <input class=" col-md-7 form-control" type="text" th:value="${company}" id="company"
+                            <div class=" col-lg-6 col-md-6  col-sm-12 col-xs-12 form-group left">
+                                <label class="col-lg-5  col-md-5  col-sm-7 col-xs-7 left other_table" for="company">Company:</label>
+                                <input class="col-lg-7  col-md-7  col-sm-5 col-xs-5 form-control" type="text" th:value="${company}" id="company"
                                        name="company" placeholder="Input Company Name"
                                        autocomplete="off">
                             </div>
 
 
-                            <div class="col-md-1 "></div>
+                            <div class="col-md-1  col-sm-12 col-xs-12  "></div>
                         </div>
 
-                        <div class=" col-md-12 left input-table">
+                        <div class=" col-md-12  col-sm-12 col-xs-12 input-table">
                             <!--Conatact Information
                                                     本来这里写的是 job link，现在改成联系信息，不过名称没改，还是joblink，
                                                     -->
-                            <div class="col-md-5 form-group left">
-                                <label class=" col-md-5 left" for="title">Contact:</label>
-                                <input class=" col-md-7 form-control" type="text" th:value="${joblink}" id="joblink"
+                            <div class=" col-lg-5 col-md-5  col-sm-12 col-xs-12  form-group left">
+                                <label class=" col-lg-5  col-md-5  col-sm-7 col-xs-7 left other_table" for="title">Contact:</label>
+                                <input class=" col-lg-7  col-md-7  col-sm-5 col-xs-5 form-control" type="text" th:value="${joblink}" id="joblink"
                                        name="joblink" placeholder="Contacts information such as link or email"
                                        autocomplete="off">
                             </div>
 
                             <!--Workplace-->
-                            <div class="col-md-6 form-group left">
-                                <label class=" col-md-5 left" for="place">Workplace:</label>
-                                <input class=" col-md-7 form-control" type="text" th:value="${place}" id="place"
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group left">
+                                <label class=" col-lg-5  col-md-5  col-sm-7 col-xs-7 left other_table" for="place">Workplace:</label>
+                                <input class=" col-lg-7  col-md-7  col-sm-5 col-xs-5 form-control" type="text" th:value="${place}" id="place"
                                        name="place" placeholder="Write Down Workplace"
                                        autocomplete="off">
                             </div>
@@ -87,9 +87,9 @@
 
                         </div>
                         <!--Detail/Description-->
-                        <div class="col-md-12 form-group job_detail left" style="margin-top:20px">
-                            <label class=" col-md-2 left" for="description">Job Details: </label>
-                            <textarea class=" col-md-8 table form-control" name="description" id="description"
+                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 form-group job_detail left" style="margin-top:20px">
+                            <label class=" col-lg-2 col-md-2  col-sm-9 col-xs-9 left other_table" for="description">Job Details: </label>
+                            <textarea class=" col-lg-8 col-md-8  col-sm-3 col-xs-3 table form-control" name="description" id="description"
                                       th:text="${description}"
                                       style="height:180px; border: 2px solid #ccc;"></textarea>
                             <div class="col-md-2 "></div>
@@ -97,19 +97,19 @@
 
                         <!--tag的选择-->
 
-                        <div class="col-md-12 form-group " style="margin-bottom:-10px">
-                            <div class=" col-md-12 left job_detail" style="margin-bottom:10px">
-                                <label class="col-md-2 " for="tag">Add Tags:</label>
-                                <input type="text" class="form-control col-md-8" th:value="${tag}" id="tag" name="tag"
+                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 form-group " style="margin-bottom:-10px">
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 left job_detail " style="margin-bottom:10px">
+                                <label class="col-lg-2 col-md-2  col-sm-9 col-xs-9" for="tag">Add Tags:</label>
+                                <input type="text" class="form-control col-lg-8 col-md-8 col-sm-3 col-xs-3" th:value="${tag}" id="tag" name="tag"
                                        autocomplete="off"
                                        placeholder="Select or Input tags, divided by comma"
                                        onclick="showSelectTag()">
                                 <div class="col-md-2 "></div>
                             </div>
 
-                            <div class="col-md-12 form-group ">
-                                <div class="col-md-1"></div>
-                                <div id="select-tag" class="publish_tag_tab col-md-10" >
+                            <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12  form-group ">
+                                <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 "></div>
+                                <div id="select-tag" class="publish_tag_tab col-lg-10 col-md-10  col-sm-8 col-xs-8 " >
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
                                             th:class="${selectCategoryStat.first ? 'active':''}"
@@ -137,7 +137,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-1"></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
                             </div>
 
                         </div>
