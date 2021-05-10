@@ -91,13 +91,13 @@
                             <label class=" col-md-2 left" for="description">Job Details: </label>
                             <textarea class=" col-md-8 table form-control" name="description" id="description"
                                       th:text="${description}"
-                                      style="height:180px; border: 2px solid #ccc; "></textarea>
+                                      style="height:180px; border: 2px solid #ccc;"></textarea>
                             <div class="col-md-2 "></div>
                         </div>
 
                         <!--tag的选择-->
 
-                        <div class="col-md-12 form-group ">
+                        <div class="col-md-12 form-group " style="margin-bottom:-10px">
                             <div class=" col-md-12 left job_detail" style="margin-bottom:10px">
                                 <label class="col-md-2 " for="tag">Add Tags:</label>
                                 <input type="text" class="form-control col-md-8" th:value="${tag}" id="tag" name="tag"
@@ -110,15 +110,13 @@
                             <div class="col-md-12 form-group ">
                                 <div class="col-md-1"></div>
                                 <div id="select-tag" class="publish_tag_tab col-md-10" >
-                                    <ul class="nav nav-pills" role="tablist">
+                                    <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
                                             th:class="${selectCategoryStat.first ? 'active':''}"
-                                            style="border-radius:20px; margin-right:5px; background-color:#43A9BF;margin-bottom:5px"
                                         >
                                             <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home"
                                                role="tab"
                                                data-toggle="tab" th:text="${selectCategory.categoryName}"
-                                               style="color:white; border-radius:20px; "
                                             >
                                             </a>
                                         </li>

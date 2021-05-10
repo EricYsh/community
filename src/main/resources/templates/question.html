@@ -77,26 +77,31 @@
                         <!--回复框-->
                         <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="comment_section"
-                             style="margin-top:-25px; margin-left:-15px;">
-                            <h3  class="bold" >
-                                <span th:text="${question.getCommentCount()}"></span> comments
-                            </h3>
+                             style=" margin-left:-15px;">
                             <div class="flex" style=" height:60px">
                                 <a href="#" style="margin-right:5px;">
                                     <img class="media-object img-rounded" th:src="${question.user.avatarUrl}">
                                 </a>
                                 <input  style="margin-right:5px;" type="hidden" id="question_id" th:value="${question.id}">
                                 <textarea class="form-control" rows="4" id="comment_content"
-                                          style="margin-right:5px; "></textarea>
+                                          style="margin-right:5px; "  placeholder="Give a friendly Comment !"></textarea>
                                 <button type="button" class="btn btn-info bold" style="float: right; background:#43A9BF; "
                                         onclick="post()">
                                     Submit
                                 </button>
                             </div>
+                            <div class="flex">
+                                <div class="col-lg-8 col-md-5 col-sm-3 col-xs-2" ></div>
+                                <h5  class=" col-lg-3 col-md-5 col-sm-6 col-xs-7" style="text-align:right;">
+                                    total <span th:text="${question.getCommentCount()}"></span> comments
+                                </h5>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-3"></div>
+                            </div>
+
                         </div>
 
                         <!-- 展示回复们-->
-                        <hr class="col-lg-8 col-md-8 col-sm-11 col-xs-11">
+                        <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="margin-top:-8px">
                         <div class="col-lg-12 col-md-11 col-sm-12 col-xs-12" style="margin-left:-15px;margin-bottom:20px">
                             <div  th:each="comment: ${comments}" >
                                 <div class="media">
