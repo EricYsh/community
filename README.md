@@ -31,7 +31,7 @@ https://flywaydb.org/getstarted/firststeps/maven
 Lombok
 https://www.projectlombok.org/setup/maven
 
-MyBatis Generator (a code generator for MyBatis正在测试，暂时没用到)
+MyBatis Generator (code generator for MyBatis)
 http://mybatis.org/generator/
 
 ## Run this project in your device
@@ -39,6 +39,3 @@ http://mybatis.org/generator/
 2. mvn flyway:migrate
 3. mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 4. run this project in IDEA
-
-### Please ignore the following code
-> mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

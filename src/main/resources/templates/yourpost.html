@@ -26,18 +26,25 @@
                     <!--循环展示职业信息-->
                     <div class="media" th:each="question : ${pagination.questions}">
                         <div class="media-left">
-                            <a href="#">
+                            <a>
                                 <img class="media-object" th:src="${question.user.avatarUrl}">
                             </a>
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading" th:text="${question.title}"></h4>
+                            <h4 class="media-heading">
+                                <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}" ></a>
+                            </h4>
                             <span th:text="${question.company.toUpperCase()}"></span>
                             <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span><br>
                             <span class="commentview">
                         <span th:text="${question.commentCount}"></span> comments
                         • <span th:text="${question.viewCount}"></span> views
                         • <span th:text="${#dates.format(question.gmtCreate,'yyyy MM dd HH:mm')}"></span>
+                                 • <a th:href="@{'/publish/'+${question.id}}"
+                                      th:if="${session.user != null && session.user.getId() == question.getCreator()}">
+                            <span class=" glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            Edit
+                        </a>
                     </span>
                         </div>
                     </div>
@@ -89,15 +96,15 @@
                     <!--                </div>-->
                     <!--            </div>-->
                     <!--            这里是我发布的，我的回复，调整css-->
-                    <div class="list-group">
-                        <a href="/yourpost/questions"
-                           th:class="${section=='questions'}? 'active list-group-item':'list-group-item'">Your Post</a>
-                        <a href="/yourpost/replies"
-                           th:class="${section=='replies'}? 'active list-group-item':'list-group-item'">
-                            <span class="badge">1</span>
-                            Latest Reply
-                        </a>
-                    </div>
+<!--                    <div class="list-group">-->
+<!--                        <a href="/yourpost/questions"-->
+<!--                           th:class="${section=='questions'}? 'active list-group-item':'list-group-item'">Your Post</a>-->
+<!--&lt;!&ndash;                        <a href="/yourpost/replies"&ndash;&gt;-->
+<!--&lt;!&ndash;                           th:class="${section=='replies'}? 'active list-group-item':'list-group-item'">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="badge">1</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            Latest Reply&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                    </div>-->
                 </div>
 
             </div>
