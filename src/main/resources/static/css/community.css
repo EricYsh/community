@@ -9,7 +9,7 @@
     z-index: -10;
     zoom: 1;
     background-color: #fff;
-    background: url("images/6.png");
+    background: url("images/backgroundImg.png");
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
@@ -20,7 +20,7 @@
 /*background: #efefef;*/
 
 /*body {
-    background-image: url("images/6.png");
+    background-image: url("images/backgroundImg.png");
     background-color: #43A9BF;
     background-size: cover;
     background-repeat: no-repeat;
@@ -196,7 +196,7 @@ input {
     font-weight:bold;
     /*position: absolute;*/
     border: 0px solid #43A9BF;
-    border-color:#43A9BF
+    border-color:#43A9BF;
     bottom: 0;
 }
 
