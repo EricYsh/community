@@ -2,7 +2,7 @@
 A web app help SAT students especially for CS major to find internships or even work.
 
 ## Records of framework we use
-### frontend
+### Frontend
 Thymeleaf:
 https://www.thymeleaf.org/doc/articles/layouts.html
 
@@ -12,10 +12,7 @@ https://v3.bootcss.com/getting-started/
 jQuery:
 https://jquery.com/
 
-### backend
-OAuth App
-https://docs.github.com/en/developers/apps/creating-an-oauth-app
-
+### Backend
 Spring Boot
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
 
@@ -31,8 +28,15 @@ https://flywaydb.org/getstarted/firststeps/maven
 Lombok
 https://www.projectlombok.org/setup/maven
 
+### Tools
+OAuth App
+https://docs.github.com/en/developers/apps/creating-an-oauth-app
+
 MyBatis Generator (code generator for MyBatis)
 http://mybatis.org/generator/
+
+Editor.md (open source markdown editor)
+https://pandao.github.io/editor.md/
 
 ## Run this project in your device
 1. rm ~/community.*
