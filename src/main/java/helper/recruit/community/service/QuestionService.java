@@ -2,6 +2,7 @@ package helper.recruit.community.service;
 
 import helper.recruit.community.dto.PaginationDTO;
 import helper.recruit.community.dto.QuestionDTO;
+import helper.recruit.community.dto.SearchDTO;
 import helper.recruit.community.exception.CustomizeErrorCode;
 import helper.recruit.community.exception.CustomizeExpection;
 import helper.recruit.community.mapper.QuestionExtMapper;
@@ -34,11 +35,20 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
-    public PaginationDTO list(Integer page, Integer size) {
+    public PaginationDTO list(String search, Integer page, Integer size) {
+        // search function
+        if (StringUtils.isNotBlank(search)) {
+            String[] tag = StringUtils.split(search, " ");
+            search = Arrays.stream(tag).collect(Collectors.joining("|"));
+        }
+
+
         // page operation
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
+        SearchDTO searchDTO = new SearchDTO();
+        searchDTO.setSearch(search);
+        Integer totalCount = questionExtMapper.countBySearch(searchDTO);
         // total count is the number of job list in the question database
         // page number
         // size is 5 : one page 5 rows
@@ -56,9 +66,12 @@ public class QuestionService {
         paginationDTO.setPagination(totalPage, page);
 
         Integer offset = size * (page - 1);
-        QuestionExample questionExample = new QuestionExample();
-        questionExample.setOrderByClause("gmt_create desc");//倒序排序问题
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+//        QuestionExample questionExample = new QuestionExample();
+//        questionExample.setOrderByClause("gmt_create desc");//倒序排序问题
+        searchDTO.setSize(size);
+        searchDTO.setPage(offset);
+        List<Question> questions = questionExtMapper.selectBySearch(searchDTO);
+//        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
 
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
