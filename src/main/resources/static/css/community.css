@@ -234,11 +234,13 @@ input {
 }
 
 .job_detail{
-   margin-left:-25px
+   margin-right:-20px;
+   margin-left:5px;
 }
 
 .publish_tag_tab{
     display: none;
+    margin-top:5px;
 }
 
 .ul_style{
@@ -255,4 +257,6 @@ input {
 .flex{
   display:flex;
 }
-
+.choose_tag{
+ margin-left:15px;
+}

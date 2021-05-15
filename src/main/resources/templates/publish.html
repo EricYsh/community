@@ -20,8 +20,8 @@
 <div class="demo"></div>
 <div class="row">
 
-    <div class="col-md-2 col-gl-2 col-sm-1 col-xs-1"></div>
-    <div class="col-md-8 col-gl-8 col-sm-10 col-xs-10">
+    <div class="col-md-1 col-gl-1 col-sm-1 col-xs-1"></div>
+    <div class="col-md-10 col-gl-10 col-sm-10 col-xs-10">
 
         <!--这端数据获取需要注意，因为和设计挺多不一样的地方，所以改的比较多-->
         <div class="container-fluid main1 card-style" style=" color:#052D4F; ">
@@ -55,8 +55,7 @@
                                     Title:</label>
                                 <input class="col-lg-7  col-md-7 col-sm-5 col-xs-5 form-control" type="text"
                                        th:value="${title}" id="title"
-                                       name="title" placeholder="Job Position"
-                                       autocomplete="off">
+                                       name="title" placeholder="Job Position" autocomplete="off">
                             </div>
 
                             <!--需要改库 加个Company_Name-->
@@ -72,7 +71,7 @@
                             <div class="col-md-1  col-sm-12 col-xs-12  "></div>
                         </div>
 
-                        <div class=" col-md-12  col-sm-12 col-xs-12 input-table">
+                        <div class="col-lg-12  col-md-12  col-sm-12 col-xs-12 input-table">
                             <!--Conatact Information
                                                     本来这里写的是 job link，现在改成联系信息，不过名称没改，还是joblink，
                                                     -->
@@ -85,27 +84,32 @@
                             </div>
 
                             <!--Workplace-->
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group left">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group left">
                                 <label class=" col-lg-5  col-md-5  col-sm-7 col-xs-7 left other_table" for="place">Workplace:</label>
                                 <input class=" col-lg-7  col-md-7  col-sm-5 col-xs-5 form-control" type="text"
                                        th:value="${place}" id="place"
                                        name="place" placeholder="Location of Work"
                                        autocomplete="off">
                             </div>
-                            <div class="col-md-1 "></div>
+                            <div class="col-md-1 col-sm-12 col-xs-12  "></div>
 
                         </div>
+
+
                         <!--Detail/Description-->
-                        <label for="description">Job Details: </label>
-                        <div class=" form-group" id="test-editor">
-                            <textarea class="form-control"
-                                      name="description" id="description"
-                                      th:text="${description}"
-                                      style="display:none"></textarea>
-                        </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                var editor = editormd("test-editor", {
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input-table ">
+                            <div class=" col-lg-11 col-md-11 col-sm-12 col-xs-12 left">
+                                <label class="col-lg-2 col-md-2  col-sm-8 col-xs-8  job_detail" for="description">Job
+                                    Details: </label>
+
+                                <div class="col-lg-7 col-md-8 col-sm-4 col-xs-4 form-group " id="test-editor">
+                                <textarea class="form-control "
+                                          name="description" id="description"
+                                          th:text="${description}"
+                                          style="display:none;"></textarea>
+                                    <script class="" type="text/javascript">
+                                   $(function () {
+                                    var editor = editormd("test-editor", {
                                     width: "100%",
                                     height: 500,
                                     path: "/js/lib/",
@@ -113,28 +117,41 @@
                                     placeholder: "Please input job details. (It is a mini markdown editor)",
                                     lang: {  // Language data, you can custom your language.
                                         name: "en",
-                                    }
+                                      }
+                                   });
                                 });
-                            });
-                        </script>
+
+
+
+                                    </script>
+                                </div>
+
+                            </div>
+                            <div class="col-md-1 col-sm-12 col-xs-12  "></div>
+                        </div>
 
                         <!--tag的选择-->
 
-                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 form-group " style="margin-bottom:-10px">
-                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 left job_detail "
+                        <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 input-table " style="margin-bottom:-10px;">
+                            <div class=" col-lg-11 col-md-11 col-sm-12 col-xs-12 left "
                                  style="margin-bottom:10px">
-                                <label class="col-lg-2 col-md-2  col-sm-9 col-xs-9" for="tag">Add Tags:</label>
-                                <input type="text" class="form-control col-lg-8 col-md-8 col-sm-3 col-xs-3"
+                                <label class="col-lg-2 col-md-2  col-sm-8 col-xs-8 job_detail" for="tag">Add
+                                    Tags:</label>
+                                <input type="text" class="col-lg-7 col-md-7 col-sm-4 col-xs-4 form-control "
                                        th:value="${tag}" id="tag" name="tag"
                                        autocomplete="off"
                                        placeholder="Select or Input tags, divided by comma"
                                        onclick="showSelectTag()">
-                                <div class="col-md-2 "></div>
                             </div>
 
-                            <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12  form-group ">
-                                <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 "></div>
-                                <div id="select-tag" class="publish_tag_tab col-lg-10 col-md-10  col-sm-8 col-xs-8 ">
+                            <div class="col-md-1 col-sm-12 col-xs-12"></div>
+                        </div>
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group " style="margin-left:5px;">
+                            <div class="col-lg-11 col-md-11  col-sm-12 col-xs-12 form-group ">
+                                <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3"></div>
+                                <div id="select-tag" class="publish_tag_tab col-lg-11 col-md-11 col-sm-8 col-xs-8 ">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
                                             th:class="${selectCategoryStat.first ? 'active':''}">
@@ -161,6 +178,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
                             </div>
 
@@ -212,7 +230,7 @@
         </div>
 
     </div>
-    <div class="col-md-2 col-gl-2 col-sm-1 col-xs-1"></div>
+    <div class="col-md-1 col-gl-2 col-sm-1 col-xs-1"></div>
 </div>
 </body>
 </html>
