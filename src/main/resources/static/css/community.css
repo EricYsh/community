@@ -244,10 +244,11 @@ input {
 }
 
 .ul_style{
- display:flex;
- border: 3px solid #052D4F;
- background-color:#43A9BF;
-  border-radius: 20px;
+ display:block;
+ border: 0px solid #052D4F; /*  border: 3px solid #052D4F;*/
+ background-color: #F5F5F5;/* #43A9BF / white / #43A9BF / #F5F5F5 / #F9F3F3*/
+ border-radius: 15px;
+ width:280px
 }
 
 .bold{
@@ -259,4 +260,12 @@ input {
 }
 .choose_tag{
  margin-left:15px;
+}
+.question_context_style{
+  margin-left:5px;
+}
+.hr_style{
+ margin-top:10px;
+ margin-bottom:5px;
+
 }
