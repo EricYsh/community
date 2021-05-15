@@ -159,7 +159,7 @@ public class QuestionService {
             // update
 //            question.setGmtModified(System.currentTimeMillis());
             Question updateQuestion = new Question();
-            updateQuestion.setGmtCreate(System.currentTimeMillis());
+            updateQuestion.setGmtModified(System.currentTimeMillis());
             updateQuestion.setTitle(question.getTitle());
             updateQuestion.setCompany(question.getCompany());
             updateQuestion.setTag(question.getTag());
