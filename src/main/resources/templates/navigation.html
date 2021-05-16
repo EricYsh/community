@@ -10,7 +10,8 @@
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only "> Recruit Helper</span>
                 </button>
-                <a href="/" class="glyphicon glyphicon-home home_button" style=" text-decoration:none; color:white;"></a>
+                <a href="/" class="glyphicon glyphicon-home home_button"
+                   style=" text-decoration:none; color:white;"></a>
                 <a class="navbar-brand" style="color:white;" href="/">Recruit Helper</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,7 +20,8 @@
                 <form class="navbar-form navbar-left display-style" action="/" method="get">
                     <span></span>
                     <div class="form-group display-style" style=" display:flex; justify-content:center;margin-top:7px">
-                        <input type="text" class="form-control border-style" name="search" placeholder="Search Job Title">
+                        <input type="text" class="form-control border-style" name="search"
+                               placeholder="Search Job Title">
                         <button type="submit" class=" glyphicon glyphicon-search icon-style search-button"
                                 aria-hidden="true"></button>
                     </div>
@@ -49,8 +51,12 @@
                         </ul>
                     </li>
                     <li th:if="${session.user == null}">
+                        <!--                        <a style="color:white; font-size: 15px; font-weight:normal"-->
+                        <!--                           href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">-->
+                        <!--                            Log in-->
+                        <!--                        </a>-->
                         <a style="color:white; font-size: 15px; font-weight:normal"
-                           href="https://github.com/login/oauth/authorize?client_id=8ca0d9325da346901696&redirect_uri=http://localhost:8080/callback&scope=user&state=1">
+                           th:href="@{https://github.com/login/oauth/authorize(client_id='8ca0d9325da346901696',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('redirectUri')},scope='user',state=1)}">
                             Log in
                         </a>
                     </li>
