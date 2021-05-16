@@ -128,6 +128,10 @@ public class PublishController {
         question.setId(id);
 
         questionService.createOrUpdate(question);
-        return "redirect:/";
+        if (id == null) {
+            return "redirect:/";
+        } else {
+            return "redirect:/question/" + question.getId();
+        }
     }
 }
