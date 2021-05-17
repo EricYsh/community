@@ -44,11 +44,12 @@
                             </div>
                         </a>
 
-                        <ul class="dropdown-menu">
-                            <li><a href="/yourpost/questions">Your
-                                Post</a></li>
-                            <li><a href="/logout">Log out</a></li>
-                        </ul>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width:134px">
+                                <li ><a href="/yourpost/questions">Your
+                                    Post</a></li>
+                                <li><a href="/logout">Log out</a></li>
+                            </ul>
+
                     </li>
                     <li th:if="${session.user == null}">
                         <!--                        <a style="color:white; font-size: 15px; font-weight:normal"-->
