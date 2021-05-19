@@ -1,0 +1,18 @@
+2021-05-19 19:36:15.627  INFO 58242 --- [restartedMain] h.r.community.CommunityApplication       : Starting CommunityApplication using Java 15.0.2 on MacBook-Pro.lan with PID 58242 (/Users/ericyin/IdeaProjects/community/target/classes started by ericyin in /Users/ericyin/IdeaProjects/community)
+2021-05-19 19:36:15.629  INFO 58242 --- [restartedMain] h.r.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2021-05-19 19:36:15.713  INFO 58242 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-05-19 19:36:15.714  INFO 58242 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-05-19 19:36:15.729  WARN 58242 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2021-05-19 19:36:17.041  INFO 58242 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-19 19:36:17.051  INFO 58242 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-19 19:36:17.052  INFO 58242 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-19 19:36:17.117  INFO 58242 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-19 19:36:17.117  INFO 58242 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1402 ms
+2021-05-19 19:36:17.164  INFO 58242 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-19 19:36:17.326  INFO 58242 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-19 19:36:17.332  INFO 58242 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/community'
+2021-05-19 19:36:17.932  INFO 58242 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-19 19:36:18.005  INFO 58242 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-05-19 19:36:18.238  INFO 58242 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-19 19:36:18.273  INFO 58242 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-19 19:36:18.285  INFO 58242 --- [restartedMain] h.r.community.CommunityApplication       : Started CommunityApplication in 3.205 seconds (JVM running for 3.966)
