@@ -51,10 +51,9 @@
                 <div class="col-lg-8 col-md-11 col-sm-12 col-xs-12" style="margin-right:-15px;">
                     <div class="col-lg-12 col-md-8 col-sm-12 col-xs-12">
                         <h5 style="margin-top:15px;margin-bottom:-2px">
-                            Company: <span th:text="${question.company}"></span>
-<!--                            <span th:text=" in "></span>-->
-                            <br>
-                            Workplace: <span th:text="${question.place}"></span>
+                            <span th:text="${question.company.toUpperCase()}"></span>
+                            <span th:text=" in "></span>
+                            <span th:text="${question.place.substring(0,1).toUpperCase()+question.place.substring(1).toLowerCase()}"></span>
                         </h5>
                         <span class="commentview">
                            | Publisher: <span th:text="${question.user.getName()}"></span>
@@ -85,6 +84,9 @@
                                     // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
                                 });
                             });
+
+
+
 
 
                         </script>
@@ -193,19 +195,18 @@
                     <!-- 相关推荐-->
                     <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 hr_style">
                     <h3 class="bold" style="margin-top:10px">Related Job Information</h3>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                         style=" margin-left:-55px; margin-bottom:10px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" margin-left:-55px; margin-bottom:10px;">
 
                         <!--展示相关推荐-->
                         <ul style="list-style-type: none;">
-                            <li class=" " th:each="related: ${relatedQuestions}" style=" margin-bottom:15px; ">
+                            <li class=" " th:each="related: ${relatedQuestions}" style=" margin-bottom:15px; " >
                                 <div class="flex ul_style" style="margin-left:0px;">
                                     <!--
                                     <img style="margin-top:5px; width:30px; height:30px; margin-right:10px"
                                          class="media-object img-circle" th:src="${question.user.avatarUrl}">
                                       -->
                                     <!--按钮-->
-                                    <h3 style="margin-top:10px; margin-left:10px;margin-right:10px;">
+                                    <h3  style="margin-top:10px; margin-left:10px;margin-right:10px;">
                                         <a class="glyphicon glyphicon-circle-arrow-right"
                                            style=" color:#43A9BF; text-decoration:none "
                                            th:href="@{'/question/'+${related.id}}"></a>
