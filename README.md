@@ -1,5 +1,7 @@
 ## CPT202 Group Project
-A web app help SAT students especially for CS major to find internships or even work.
+A web app to help SAT students especially for CS major to find internships or even work.
+
+Visit here: http://1.15.6.230/
 
 ## Records of framework we use
 ### Frontend
@@ -41,5 +43,4 @@ https://pandao.github.io/editor.md/
 ## Run this project in your device
 1. rm ~/community.*
 2. mvn flyway:migrate
-3. mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
-4. run this project in IDEA
+3. run this project in IDEA
